@@ -1,5 +1,8 @@
 # simplydialogs
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, Opera, Firefox and Edge (Linux & Windows 10). Use simplydialogs if you just need some dialogs on a minimalistic webpage, or want a quick alternative to the builtin dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar.
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. 
+Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
+Opera, Firefox and Edge (Linux & Windows 10). Use simplydialogs if you just need some dialogs on a minimalistic webpage, 
+or want a quick alternative to the builtin dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar.
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
@@ -11,7 +14,8 @@ A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error
 * No forced styling (beyond very basics), adopts the current "theme"
 * Small footprint, JS + CSS less than 10k. Without beep sound less than 5k.
 
-The dialogs currently looks like this in Chrome. Be aware that there are differences in the look of unicode emojis, but the used emojis are supported by alle the major browsers :
+The dialogs currently looks like this in Chrome. Be aware that there are differences in the look of unicode emojis, but the default unicodes
+are supported by alle the major browsers :
 <p float="left">
 <img src="assets/alert.png" width="200">
 <img src="assets/confirm.png" width="200">
@@ -22,14 +26,14 @@ The dialogs currently looks like this in Chrome. Be aware that there are differe
 </p>
 
 ## Usage
-Include the script and CSS. A version without beep are named ```dialogs.wb.*```.
+Include the script and CSS. A version without beep are named ```dialogs.wb.*```. That reduces the code size about 50%.
 
 ```html
 <script src="path/to/simplydialogs/dist/dialogs.min.js"></script>
 <link rel="stylesheet" type="text/css" href="path/to/simplydialogs/dist/dialogs.min.css">
 ```
 
-That gives you a SimplyDialogs function. For convenience, create a shorthand alias 
+That makes a SimplyDialogs function available. For convenience, create a shorthand alias :
 
 ```javascript
 const Dlg = SimplyDialogs
@@ -89,19 +93,20 @@ If you want to change the confirm yes/no buttons to for example something differ
 Dialogs.DEFAULTS.buttons.captions.yes = 'Aceptar'
 Dialogs.DEFAULTS.buttons.captions.no = 'Cancelar'
 ```
-If you want to use an fontawesome icon instead of the default unicode sign, for example a nicer information icon (here using bootstrap):
+If you want to use an image instead of the default unicode symbol, for example a nicer information glyph :
 
 ```javascript
-Dialogs.DEFAULTS.icons.information = '<i class="fa fa-info-circle fa-lg text-primary"></i>'
+Dialogs.DEFAULTS.icons.information = '<img src="myglyphs/information.png">'
 ```
-If you want to show bootstrap buttons instead of neutral standard button
+If you want to show bootstrap buttons instead of neutral standard button :
 
 ```javascript
 Dialogs.DEFAULTS.buttons.classes.ok = 'btn btn-sm btn-success'
 ```
 
 ## Options on the fly
-Changing defaults are global, if you just want to modify a dialog on the fly, you can pass options with the same structure as the defaults literal, only the desired differences are needed :
+Changing defaults are global, if you just want to modify a dialog on the fly, you can pass options with the same structure as the defaults 
+literal, only the desired differences are needed :
 
 ```javascript
 Dlg.alert('Lorem ipsum dolor sit amet, consectetur ...', {
