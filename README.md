@@ -2,7 +2,7 @@
 A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. 
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
 Opera, Firefox and Edge (Linux & Windows 10). Use simplydialogs if you just need some dialogs on a minimalistic webpage, 
-or want a quick alternative to the builtin dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar.
+or want a quick alternative to the built-in dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar.
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
@@ -15,7 +15,7 @@ or want a quick alternative to the builtin dialogs or modals provided by your fa
 * Small footprint, JS + CSS less than 10k. Without beep sound less than 5k.
 
 The dialogs currently looks like this in Chrome. Be aware that there are differences in the look of unicode emojis, but the default unicodes
-are supported by alle the major browsers :
+are supported greatly by all the major browsers :
 <p float="left">
 <img src="assets/alert.png" width="200">
 <img src="assets/confirm.png" width="200">
@@ -87,6 +87,8 @@ let defaults = {
   }
 }
 ```
+### DEFAULTS examples
+
 If you want to change the confirm yes/no buttons to for example something different in spanish:
 
 ```javascript
@@ -98,14 +100,14 @@ If you want to use an image instead of the default unicode symbol, for example a
 ```javascript
 Dlg.DEFAULTS.icons.information = '<img src="myglyphs/information.png">'
 ```
-If you want to show bootstrap buttons instead of neutral standard button :
+If you want to show a bootstrap styled button instead of a neutral standard button :
 
 ```javascript
 Dlg.DEFAULTS.buttons.classes.ok = 'btn btn-sm btn-success'
 ```
 
 ## Options on the fly
-Changing defaults are global, if you just want to modify a dialog on the fly, you can pass options with the same structure as the defaults 
+Changing defaults are global, if you just want to style a single dialog "on the fly", you can pass options with the same structure as the defaults 
 literal, only the desired differences are needed :
 
 ```javascript
