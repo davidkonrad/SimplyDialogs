@@ -1,5 +1,5 @@
 # simplydialogs
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with chrome, opera, firefox and edge. Use simplydialogs if you just want some dialogs on a minimalistic webpage, or want a quick alternative to the builtin dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or UIkit.
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, Opera, Firefox and Edge (Linux & Windows 10). Use simplydialogs if you just need some dialogs on a minimalistic webpage, or want a quick alternative to the builtin dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar.
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
@@ -30,12 +30,12 @@ Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 ```
-![Alert](assets/alert.png "Standard alert")
-![Confirm](assets/confirm.png "Standard confirm")
-![Information](assets/information.png "Standard information / info")
-![Error](assets/error.png "Standard error")
-![Bell](assets/bell.png "Standard bell, also plays sound")
-![Alert long text](assets/alert-long-text.png "Alert with long text")
+![Alert](assets/alert.png "Standard alert" | width=100)
+![Confirm](assets/confirm.png "Standard confirm" | width=100)
+![Information](assets/information.png "Standard information / info" | width=100)
+![Error](assets/error.png "Standard error" | width=100)
+![Bell](assets/bell.png "Standard bell, also plays sound" | width=100)
+![Alert long text](assets/alert-long-text.png "Alert with long text" | width=100)
 
 ## Change defaults
 All dialogs have som basic defaults which can be altered
