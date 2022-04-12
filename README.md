@@ -1,4 +1,4 @@
-#simplydialogs
+# simplydialogs
 A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with chrome, opera, firefox and edge. Use simplydialogs if you just want some dialogs on a minimalistic webpage, or want a quick alternative to the builtin dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or UIkit.
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
@@ -11,7 +11,7 @@ A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error
 * No forced styling (beyond very basics), adopts the current "theme"
 * Small footprint, JS+CSS less than 10k
 
-#Usage
+## Usage
 Include the script and CSS
 
 ```html
@@ -32,13 +32,13 @@ Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 ```
 ![Alert](assets/alert.png "Standard alert")
 ![Confirm](assets/confirm.png "Standard confirm")
-![Information](assets/information "Standard information / info")
+![Information](assets/information.png "Standard information / info")
 ![Error](assets/error.png "Standard error")
 ![Bell](assets/bell.png "Standard bell, also plays sound")
 ![Alert long text](assets/alert-long-text.png "Alert with long text")
 
-#Change defaults
-All dialogs have som basic defaults which can be altered 
+## Change defaults
+All dialogs have som basic defaults which can be altered
 
 ```javascript
 let defaults = {
@@ -89,7 +89,7 @@ If you want to show bootstrap buttons instead of neutral standard button
 Dialogs.DEFAULTS.buttons.classes.ok = 'btn btn-sm btn-success'
 ```
 
-#Options on the fly
+## Options on the fly
 Changing defaults are global, if you just want to modify a dialog on the fly, you can pass options with the same structure as the defaults literal, only the desired differences are needed :
 
 ```javascript
