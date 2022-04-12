@@ -90,18 +90,18 @@ let defaults = {
 If you want to change the confirm yes/no buttons to for example something different in spanish:
 
 ```javascript
-Dialogs.DEFAULTS.buttons.captions.yes = 'Aceptar'
-Dialogs.DEFAULTS.buttons.captions.no = 'Cancelar'
+Dlg.DEFAULTS.buttons.captions.yes = 'Aceptar'
+Dlg.DEFAULTS.buttons.captions.no = 'Cancelar'
 ```
 If you want to use an image instead of the default unicode symbol, for example a nicer information glyph :
 
 ```javascript
-Dialogs.DEFAULTS.icons.information = '<img src="myglyphs/information.png">'
+Dlg.DEFAULTS.icons.information = '<img src="myglyphs/information.png">'
 ```
 If you want to show bootstrap buttons instead of neutral standard button :
 
 ```javascript
-Dialogs.DEFAULTS.buttons.classes.ok = 'btn btn-sm btn-success'
+Dlg.DEFAULTS.buttons.classes.ok = 'btn btn-sm btn-success'
 ```
 
 ## Options on the fly
