@@ -30,12 +30,12 @@ Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 ```
-![Alert](assets/alert.png "Standard alert" | width=100)
-![Confirm](assets/confirm.png "Standard confirm" | width=100)
-![Information](assets/information.png "Standard information / info" | width=100)
-![Error](assets/error.png "Standard error" | width=100)
-![Bell](assets/bell.png "Standard bell, also plays sound" | width=100)
-![Alert long text](assets/alert-long-text.png "Alert with long text" | width=100)
+![Alert](assets/alert.png | width=100)
+![Confirm](assets/confirm.png | width=100)
+![Information](assets/information.png | width=100)
+![Error](assets/error.png | width=100)
+![Bell](assets/bell.png | width=100)
+![Alert long text](assets/alert-long-text.png | width=100)
 
 ## Change defaults
 All dialogs have som basic defaults which can be altered
