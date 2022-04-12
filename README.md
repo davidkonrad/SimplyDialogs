@@ -30,12 +30,14 @@ Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 ```
-<img src="assets/alert.png" width="100">
-<img src="assets/confirm.png" width="100">
-<img src="assets/information.png" width="100">
-<img src="assets/error.png" width="100">
-<img src="assets/bell.png" width="100">
-<img src="assets/alert-long-text.png" width="100">
+<p float="left">
+<img src="assets/alert.png" width="150">
+<img src="assets/confirm.png" width="150">
+<img src="assets/information.png" width="150">
+<img src="assets/error.png" width="150">
+<img src="assets/bell.png" width="150">
+<img src="assets/alert-long-text.png" width="150">
+</p>
 
 ## Change defaults
 All dialogs have som basic defaults which can be altered
