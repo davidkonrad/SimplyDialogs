@@ -9,10 +9,20 @@ A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error
 * Customizeable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Small footprint, JS+CSS less than 10k
+* Small footprint, JS + CSS less than 10k. Without beep sound less than 5k.
+
+The dialogs currently looks like this in Chrome. Be aware that there are differences in the look of unicode emojis, but the used emojis are supported by alle the major browsers :
+<p float="left">
+<img src="assets/alert.png" width="200">
+<img src="assets/confirm.png" width="200">
+<img src="assets/information.png" width="200">
+<img src="assets/error.png" width="200">
+<img src="assets/bell.png" width="200">
+<img src="assets/alert-long-text.png" width="200">
+</p>
 
 ## Usage
-Include the script and CSS
+Include the script and CSS. A version without beep are named ```dialogs.wb.*```.
 
 ```html
 <script src="path/to/simplydialogs/dist/dialogs.min.js"></script>
@@ -23,21 +33,20 @@ That gives you a SimplyDialogs function. For convenience, create a shorthand ali
 
 ```javascript
 const Dlg = SimplyDialogs
-
 Dlg.alert('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.error('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 ```
-<p float="left">
-<img src="assets/alert.png" width="200">
-<img src="assets/confirm.png" width="200">
-<img src="assets/information.png" width="200">
-<img src="assets/error.png" width="200">
-<img src="assets/bell.png" width="200">
-<img src="assets/alert-long-text.png" width="200">
-</p>
+
+To wait for user response and do something according to what it is, use the returned promise :
+
+```javascript
+Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit').then(answer => {
+  console.log('The answer was ' + (answer ? 'Yes' : 'No'))
+})
+```
 
 ## Change defaults
 All dialogs have som basic defaults which can be altered
@@ -106,3 +115,16 @@ Dlg.alert('Lorem ipsum dolor sit amet, consectetur ...', {
 })
 ```
 ![Custom](assets/custom-alert.png "Example of alert with options")
+
+Another example, using the FontAwesome ```fa-info-circle``` icon, instead of unicode :
+
+```javascript
+  Dlg.information('Lorem ipsum dolor sit amet, consectetur adipiscing elit', {
+    headers: { information: 'Did you know ...?' },
+    icons: { information : '<i class="fa fa-info-circle fa-lg text-primary"></i>' },
+  })
+```
+
+![Custom](assets/information-with-fa-icon.png "Example of Info with custom icon and alternative header")
+
+
