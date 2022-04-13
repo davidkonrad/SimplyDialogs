@@ -14,16 +14,44 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 * No forced styling (beyond very basics), adopts the current "theme"
 * Small footprint, JS + CSS less than 10k. Without beep sound less than 5k.
 
-The dialogs currently looks like this in Chrome. Be aware that there are differences in the look of unicode emojis, but the default unicodes
-are supported greatly by all the major browsers :
-<p float="left">
-<img src="assets/alert.png" width="200">
-<img src="assets/confirm.png" width="200">
-<img src="assets/information.png" width="200">
-<img src="assets/error.png" width="200">
-<img src="assets/bell.png" width="200">
-<img src="assets/alert-long-text.png" width="200">
-</p>
+## type of dialogs
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Sample</th>
+    <th>Samples</th>
+  </tr>
+	<tr>
+		<td>```alert()```</td>
+		<td><img src="assets/alert.png" width="200"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>```confirm()```</td>
+		<td><img src="assets/confirm.png" width="200"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>```information()```<br>```info()```</td>
+		<td><img src="assets/information.png" width="200"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>```error()```</td>
+		<td><img src="assets/error.png" width="200"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>```bell()```</td>
+		<td><img src="assets/bell.png" width="200"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>```wait()```</td>
+		<td><img src="assets/wait.png" width="200"></td>
+		<td></td>
+	</tr>
+</table>
 
 ## Usage
 Include the script and CSS. A version without beep are named ```dialogs.wb.*```. That reduces the code size about 50%.
