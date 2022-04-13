@@ -3,8 +3,8 @@ A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
 Opera, Firefox and Edge (Linux & Windows 10). 
 
-Use simplydialogs if you just need some dialogs on a minimalistic webpage, or want a quick alternative to the built-in dialogs or modals 
-provided by your favourite framework, like Bootstrap, Tailwind or similar. 
+Use simplydialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals 
+provided by your favourite framework, like Bootstrap, Tailwind or similar. You customize the layout so it get the look of your theme / framework. 
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
@@ -14,7 +14,7 @@ provided by your favourite framework, like Bootstrap, Tailwind or similar.
 * Customizeable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Small footprint, JS + CSS less than 10k. Without beep sound less than 5k.
+* Small footprint, JS + CSS less than 10k minified; Without beep sound ~5k.
 
 ## Dialogs
 <table>
@@ -193,7 +193,7 @@ let defaults = {
 ```
 ### DEFAULTS examples
 
-If you want to change the confirm yes/no buttons to for example something different in spanish:
+If you want to change the confirm yes / no buttons to for example something different in spanish:
 
 ```javascript
 Dlg.DEFAULTS.buttons.captions.yes = 'Aceptar'
