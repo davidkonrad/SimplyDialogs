@@ -25,6 +25,7 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 		<td>
 
 			```alert()```
+
 		</td>
 		<td><img src="assets/alert.png" xwidth="200"></td>
 		<td></td>
@@ -33,33 +34,44 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 		<td>
 
 			```confirm()```
+
 		</td>
 		<td><img src="assets/confirm.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>```information()```<br>```info()```</td>
+		<td>
+
+				```information()```<br>```info()```
+
+		</td>
 		<td><img src="assets/information.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>
 
-			```error()```</td>
+			```error()```
+
+		</td>
 		<td><img src="assets/error.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>
 
-			```bell()```</td>
+			```bell()```
+
+		</td>
 		<td><img src="assets/bell.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>
 
-			```wait()```</td>
+			```wait()```
+
+		</td>
 		<td><img src="assets/wait.png" xwidth="200"></td>
 		<td></td>
 	</tr>
