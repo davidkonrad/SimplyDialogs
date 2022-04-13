@@ -22,33 +22,45 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
     <th>Samples</th>
   </tr>
 	<tr>
-		<td>```alert()```</td>
-		<td><img src="assets/alert.png" width="200"></td>
+		<td>
+
+			```alert()```
+		</td>
+		<td><img src="assets/alert.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>```confirm()```</td>
-		<td><img src="assets/confirm.png" width="200"></td>
+		<td>
+
+			```confirm()```
+		</td>
+		<td><img src="assets/confirm.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>```information()```<br>```info()```</td>
-		<td><img src="assets/information.png" width="200"></td>
+		<td><img src="assets/information.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>```error()```</td>
-		<td><img src="assets/error.png" width="200"></td>
+		<td>
+
+			```error()```</td>
+		<td><img src="assets/error.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>```bell()```</td>
-		<td><img src="assets/bell.png" width="200"></td>
+		<td>
+
+			```bell()```</td>
+		<td><img src="assets/bell.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>```wait()```</td>
-		<td><img src="assets/wait.png" width="200"></td>
+		<td>
+
+			```wait()```</td>
+		<td><img src="assets/wait.png" xwidth="200"></td>
 		<td></td>
 	</tr>
 </table>
