@@ -1,8 +1,10 @@
 # simplydialogs
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()``` and ```bell()```. 
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()```, ```bell()``` and ```bell()```. 
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
-Opera, Firefox and Edge (Linux & Windows 10). Use simplydialogs if you just need some dialogs on a minimalistic webpage, 
-or want a quick alternative to the built-in dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar.
+Opera, Firefox and Edge (Linux & Windows 10). 
+
+Use simplydialogs if you just need some dialogs on a minimalistic webpage, or want a quick alternative to the built-in dialogs or modals 
+provided by your favourite framework, like Bootstrap, Tailwind or similar. 
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
@@ -14,7 +16,7 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 * No forced styling (beyond very basics), adopts the current "theme"
 * Small footprint, JS + CSS less than 10k. Without beep sound less than 5k.
 
-## type of dialogs
+## Dialogs
 <table>
 <tr>
 <th>Type</th>
@@ -99,6 +101,8 @@ Same as ```alert()```
 
 Same as ```alert()```
 
+Produces a "beep", if you not want the beep, use ```dialogs.wb.min.js```. The embedded ```data:audio/wav;base64``` takes up around 4k.  
+
 </td>
 </tr>
 <tr>
@@ -125,7 +129,7 @@ wait.close()
 </table>
 
 ## Usage
-Include the script and CSS. A version without beep are named ```dialogs.wb.*```. That reduces the code size about 50%.
+Include the script and CSS. A version without beep are named ```dialogs.wb.*```. That reduces the code size about ~50% minified.
 
 ```html
 <script src="path/to/simplydialogs/dist/dialogs.min.js"></script>
@@ -168,7 +172,8 @@ let defaults = {
     error: '⛔',
     confirm: '✔️',
     information: '💡',
-    bell: '🔔'
+    bell: '🔔',
+    wait: '⚙️'
   },
   buttons: {
     captions: {
