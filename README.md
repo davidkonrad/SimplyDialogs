@@ -27,7 +27,7 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 ```alert()```
 
 </td>
-<td><img src="assets/alert.png" xwidth="200"></td>
+<td><img src="assets/alert.png" width="200"></td>
 <td>
 
 ```javascript
@@ -50,7 +50,7 @@ Dlg.alert('Lorem ipsum dolor sit amet, consectetur').then(answer => {
 ```confirm()```
 
 </td>
-<td><img src="assets/confirm.png" xwidth="200"></td>
+<td><img src="assets/confirm.png" width="200"></td>
 <td>
 
 Returns promise, ex: 
@@ -68,7 +68,7 @@ Dlg.confirm('Lorem ipsum dolor sit amet, consectetur').then(answer => {
 ```information()```<br>```info()```
 
 </td>
-<td><img src="assets/information.png" xwidth="200"></td>
+<td><img src="assets/information.png" width="200"></td>
 <td>
 
 Same as ```alert()```
@@ -81,7 +81,7 @@ Same as ```alert()```
 ```error()```
 
 </td>
-<td><img src="assets/error.png" xwidth="200"></td>
+<td><img src="assets/error.png" width="200"></td>
 <td>
 
 Same as ```alert()```
@@ -94,7 +94,7 @@ Same as ```alert()```
 ```bell()```
 
 </td>
-<td><img src="assets/bell.png" xwidth="200"></td>
+<td><img src="assets/bell.png" width="200"></td>
 <td>
 
 Same as ```alert()```
@@ -107,7 +107,7 @@ Same as ```alert()```
 ```wait()```
 
 </td>
-<td><img src="assets/wait.png" xwidth="200"></td>
+<td><img src="assets/wait.png" width="200"></td>
 <td>
 
 Does not return a promise, but a function you can close the wait dialog with : 
