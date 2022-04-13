@@ -19,7 +19,7 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 <tr>
 <th>Type</th>
 <th>Sample</th>
-<th>Samples</th>
+<th>Remarks</th>
 </tr>
 <tr>
 <td>
@@ -28,7 +28,21 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 </td>
 <td><img src="assets/alert.png" xwidth="200"></td>
-<td></td>
+<td>
+
+```javascript
+Dlg.alert('Lorem ipsum dolor sit amet, consectetur')
+```
+
+Returns promise, ex: 
+
+```javascript
+Dlg.alert('Lorem ipsum dolor sit amet, consectetur').then(answer => { 
+  console.log(answer) //always true 
+})
+```
+
+</td>
 </tr>
 <tr>
 <td>
@@ -37,7 +51,16 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 </td>
 <td><img src="assets/confirm.png" xwidth="200"></td>
-<td></td>
+<td>
+
+Returns promise, ex: 
+
+```javascript
+Dlg.confirm('Lorem ipsum dolor sit amet, consectetur').then(answer => { 
+  console.log(answer) //true or false
+})
+```
+</td>
 </tr>
 <tr>
 <td>
@@ -46,7 +69,11 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 </td>
 <td><img src="assets/information.png" xwidth="200"></td>
-<td></td>
+<td>
+
+Same as ```alert()```
+
+</td>
 </tr>
 <tr>
 <td>
@@ -55,7 +82,11 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 </td>
 <td><img src="assets/error.png" xwidth="200"></td>
-<td></td>
+<td>
+
+Same as ```alert()```
+
+</td>
 </tr>
 <tr>
 <td>
@@ -64,7 +95,11 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 </td>
 <td><img src="assets/bell.png" xwidth="200"></td>
-<td></td>
+<td>
+
+Same as ```alert()```
+
+</td>
 </tr>
 <tr>
 <td>
@@ -73,7 +108,19 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 </td>
 <td><img src="assets/wait.png" xwidth="200"></td>
-<td></td>
+<td>
+
+Does not return a promise, but a function you can close the wait dialog with : 
+
+```javascript
+const wait = Dlg.wait('Lorem ipsum dolor sit amet, consectetur')
+//
+//do something in code
+//
+wait.close()
+```
+
+</td>
 </tr>
 </table>
 
