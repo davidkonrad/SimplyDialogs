@@ -40,6 +40,17 @@ dialog span.dialog-icon {
 	float: left;
 }
 
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+dialog span.dialog-spinner {
+	display: inline-block;
+	animation: spin 2s infinite linear;
+}
+
 dialog .dialog-actions {
 	width: 100%;
 	text-align: right;
