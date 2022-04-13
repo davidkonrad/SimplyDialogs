@@ -16,65 +16,65 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 
 ## type of dialogs
 <table>
-  <tr>
-    <th>Type</th>
-    <th>Sample</th>
-    <th>Samples</th>
-  </tr>
-	<tr>
-		<td>
+<tr>
+<th>Type</th>
+<th>Sample</th>
+<th>Samples</th>
+</tr>
+<tr>
+<td>
 
-			```alert()```
+```alert()```
 
-		</td>
-		<td><img src="assets/alert.png" xwidth="200"></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>
+</td>
+<td><img src="assets/alert.png" xwidth="200"></td>
+<td></td>
+</tr>
+<tr>
+<td>
 
-			```confirm()```
+```confirm()```
 
-		</td>
-		<td><img src="assets/confirm.png" xwidth="200"></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>
+</td>
+<td><img src="assets/confirm.png" xwidth="200"></td>
+<td></td>
+</tr>
+<tr>
+<td>
 
-				```information()```<br>```info()```
+```information()```<br>```info()```
 
-		</td>
-		<td><img src="assets/information.png" xwidth="200"></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>
+</td>
+<td><img src="assets/information.png" xwidth="200"></td>
+<td></td>
+</tr>
+<tr>
+<td>
 
-			```error()```
+```error()```
 
-		</td>
-		<td><img src="assets/error.png" xwidth="200"></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>
+</td>
+<td><img src="assets/error.png" xwidth="200"></td>
+<td></td>
+</tr>
+<tr>
+<td>
 
-			```bell()```
+```bell()```
 
-		</td>
-		<td><img src="assets/bell.png" xwidth="200"></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>
+</td>
+<td><img src="assets/bell.png" xwidth="200"></td>
+<td></td>
+</tr>
+<tr>
+<td>
 
-			```wait()```
+```wait()```
 
-		</td>
-		<td><img src="assets/wait.png" xwidth="200"></td>
-		<td></td>
-	</tr>
+</td>
+<td><img src="assets/wait.png" xwidth="200"></td>
+<td></td>
+</tr>
 </table>
 
 ## Usage
