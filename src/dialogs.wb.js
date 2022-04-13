@@ -1,3 +1,9 @@
+/*
+	simplydialogs
+	(c) 2022 David Konrad 
+	https://github.com/davidkonrad/simplydialogs
+*/
+
 "use strict";
 
 const SimplyDialogs = (function(document) {
@@ -15,7 +21,8 @@ const SimplyDialogs = (function(document) {
 			error: '⛔',
 			confirm: '✔️',
 			information: '💡',
-			bell: '🔔'
+			bell: '🔔',
+			wait: '⚙️'
 		},
 		buttons: {
 			captions: {
@@ -45,14 +52,11 @@ const SimplyDialogs = (function(document) {
 	}
 
 	const initDialog = function(dialog, type, options) {
-
 		let use = Object.assign({}, defaults) 
-
 		const popBtn = function(name) {
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.classes[name]) dialog.querySelector(`.dialog-${name}`).classList.add(...use.buttons.classes[name].split(' '))
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
-
 		if (options) Object.keys(options).forEach(function(key) {
 			if (options[key] instanceof Object) {
 				use[key] = Object.assign({}, use[key], options[key])
@@ -60,7 +64,7 @@ const SimplyDialogs = (function(document) {
 				use[key] = options[key]
 			}
 		})
-		dialog.querySelector('.dialog-header').innerHTML = use.headers[type]
+		if (type !== 'wait') dialog.querySelector('.dialog-header').innerHTML = use.headers[type]
 		dialog.querySelector('.dialog-icon').innerHTML = use.icons[type]
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
 	}
@@ -190,6 +194,28 @@ const SimplyDialogs = (function(document) {
 		})
 	}
 
+//wait
+	const waitHTML = `
+		<dialog id="dialog-wait" style="min-width:250px;">
+			<span class="dialog-icon dialog-spinner"></span>
+		  <p class="dialog-message" style="margin-top:0.5em;"></p>
+		</dialog>
+	`;
+
+	const wait = function(message, options) {
+		const cnt = getCnt(waitHTML)
+		const dialog = gebi('dialog-wait')
+		initDialog(dialog, 'wait', options)		
+		dialog.querySelector('.dialog-message').innerHTML = message
+		dialog.showModal()
+		return { 
+			close: function() {
+				closeDialog(dialog, cnt)
+			}
+		}				
+	}
+
+//api
 	return {
 		DEFAULTS: defaults,
 		alert,
@@ -197,7 +223,8 @@ const SimplyDialogs = (function(document) {
 		info: information, //alias
 		error,
 		confirm,
-		bell
+		bell,
+		wait
 	}
 	
 })(document);
