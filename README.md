@@ -1,5 +1,5 @@
 # simplydialogs
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()```, ```bell()``` and ```wait()```. 
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()``` and ```wait()```. 
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
 Opera, Firefox and Edge (Linux & Windows 10). 
 
@@ -29,7 +29,7 @@ provided by your favourite framework, like Bootstrap, Tailwind or similar.
 ```alert()```
 
 </td>
-<td><img src="assets/alert.png" width="200"></td>
+<td><img src="assets/alert.png" width="150"></td>
 <td>
 
 ```javascript
@@ -52,7 +52,7 @@ Dlg.alert('Lorem ipsum ...').then(answer => {
 ```confirm()```
 
 </td>
-<td><img src="assets/confirm.png" width="200"></td>
+<td><img src="assets/confirm.png" width="150"></td>
 <td>
 
 Returns promise, ex: 
@@ -70,7 +70,7 @@ Dlg.confirm('Lorem ipsum ...').then(answer => {
 ```information()```<br>```info()```
 
 </td>
-<td><img src="assets/information.png" width="200"></td>
+<td><img src="assets/information.png" width="150"></td>
 <td>
 
 Same as ```alert()```
@@ -83,7 +83,7 @@ Same as ```alert()```
 ```error()```
 
 </td>
-<td><img src="assets/error.png" width="200"></td>
+<td><img src="assets/error.png" width="150"></td>
 <td>
 
 Same as ```alert()```
@@ -96,7 +96,7 @@ Same as ```alert()```
 ```bell()```
 
 </td>
-<td><img src="assets/bell.png" width="200"></td>
+<td><img src="assets/bell.png" width="150"></td>
 <td>
 
 Same as ```alert()```
@@ -111,7 +111,7 @@ Produces a "beep", if you not want the beep, use ```dialogs.wb.min.js```. The em
 ```wait()```
 
 </td>
-<td><img src="assets/wait.png" width="200"></td>
+<td><img src="assets/wait.png" width="150"></td>
 <td>
 
 Does not return a promise, but a function you can close the wait dialog with : 
