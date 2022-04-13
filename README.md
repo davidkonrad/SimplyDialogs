@@ -4,7 +4,7 @@ Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Wo
 Opera, Firefox and Edge (Linux & Windows 10). 
 
 Use simplydialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals 
-provided by your favourite framework, like Bootstrap, Tailwind or similar. You customize the layout so it get the look of your theme / framework. 
+provided by your favourite framework, like Bootstrap, Tailwind or similar. You can customize the layout so it get the look of your theme / framework. 
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
