@@ -1,5 +1,5 @@
 # simplydialogs
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()```, ```bell()``` and ```bell()```. 
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```information()```, ```bell()``` and ```wait()```. 
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
 Opera, Firefox and Edge (Linux & Windows 10). 
 
@@ -230,10 +230,10 @@ Dlg.alert('Lorem ipsum dolor sit amet, consectetur ...', {
 Another example, using the FontAwesome ```fa-info-circle``` icon, instead of unicode :
 
 ```javascript
-  Dlg.information('Lorem ipsum dolor sit amet, consectetur adipiscing elit', {
-    headers: { information: 'Did you know ...?' },
-    icons: { information : '<i class="fa fa-info-circle fa-lg text-primary"></i>' },
-  })
+Dlg.information('Lorem ipsum dolor sit amet, consectetur adipiscing elit', {
+  headers: { information: 'Did you know ...?' },
+  icons: { information : '<i class="fa fa-info-circle fa-lg text-primary"></i>' },
+})
 ```
 
 ![Custom](assets/information-with-fa-icon.png "Example of Info with custom icon and alternative header")
