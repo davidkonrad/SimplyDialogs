@@ -31,13 +31,13 @@ or want a quick alternative to the built-in dialogs or modals provided by your f
 <td>
 
 ```javascript
-Dlg.alert('Lorem ipsum dolor sit amet, consectetur')
+Dlg.alert('Lorem ipsum ...')
 ```
 
 Returns promise, ex: 
 
 ```javascript
-Dlg.alert('Lorem ipsum dolor sit amet, consectetur').then(answer => { 
+Dlg.alert('Lorem ipsum ...').then(answer => { 
   console.log(answer) //always true 
 })
 ```
@@ -56,7 +56,7 @@ Dlg.alert('Lorem ipsum dolor sit amet, consectetur').then(answer => {
 Returns promise, ex: 
 
 ```javascript
-Dlg.confirm('Lorem ipsum dolor sit amet, consectetur').then(answer => { 
+Dlg.confirm('Lorem ipsum ...').then(answer => { 
   console.log(answer) //true or false
 })
 ```
@@ -113,7 +113,7 @@ Same as ```alert()```
 Does not return a promise, but a function you can close the wait dialog with : 
 
 ```javascript
-const wait = Dlg.wait('Lorem ipsum dolor sit amet, consectetur')
+const wait = Dlg.wait('Lorem ipsum ...')
 //
 //do something in code
 //
