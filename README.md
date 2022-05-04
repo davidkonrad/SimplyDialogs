@@ -69,6 +69,7 @@ Same as ```alert()```
 </td>
 <td><img src="assets/confirm.png" width="150"></td>
 <td>
+
 ```javascript
 Dlg.confirm('Lorem ipsum ...').then(answer => { 
   console.log(answer) //true or false
@@ -173,6 +174,13 @@ Dlg.error('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
+
+const wait = Dlg.wait('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
+wait.close()
+
+Dlg.input('Lorem ipsum dolor sit amet, consectetur adipiscing elit').then(formState => {
+  console.log(formState)
+})
 ```
 
 
