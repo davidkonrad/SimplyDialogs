@@ -60,6 +60,24 @@ Same as ```alert()```
 
 </td>
 </tr>
+
+<tr>
+<td>
+
+```confirm()```
+
+</td>
+<td><img src="assets/confirm.png" width="150"></td>
+<td>
+```javascript
+Dlg.confirm('Lorem ipsum ...').then(answer => { 
+  console.log(answer) //true or false
+})
+```
+
+</td>
+</tr>
+
 <tr>
 <td>
 
@@ -112,11 +130,12 @@ wait.close()
 <td>
 
 ```input()```
+```prompt()```
 
 </td>
 <td><img src="assets/input.png" width="150"></td>
 <td>
-Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }```
+Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }``` 
 
 ```javascript
 Dlg.input('Lorem ipsum ...', options).then(state) => {
