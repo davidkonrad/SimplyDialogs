@@ -1,4 +1,7 @@
 # simplydialogs
+
+** Demo and documentation here -> https://simplydialogs.github.io **
+
 A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()``` and ```wait()```. 
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
 Opera, Firefox and Edge (Linux & Windows 10). 
