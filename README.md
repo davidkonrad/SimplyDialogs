@@ -158,7 +158,7 @@ callback: function(state, dialog) {
 </table>
 
 ## Usage
-Include the script and CSS. A version without beep are named ```dialogs.wb.*```. That reduces the code size about ~50% minified.
+Include the script and CSS.
 
 ```html
 <script src="path/to/simplydialogs/dist/dialogs.min.js"></script>
