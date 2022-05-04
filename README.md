@@ -1,13 +1,13 @@
 # simplydialogs
 
-** Demo and documentation here -> https://simplydialogs.github.io **
+**Demos and documentation here -> https://simplydialogs.github.io**
 
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()``` and ```wait()```. 
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()```, ```wait()``` and ```input()```. 
 Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
 Opera, Firefox and Edge (Linux & Windows 10). 
 
 Use simplydialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals 
-provided by your favourite framework, like Bootstrap, Tailwind or similar. You can customize the layout so it get the look of your theme / framework. 
+provided by your favourite framework, like Bootstrap, MaterializeCSS or similar. You can customize the layout so it get the look of your theme / framework. 
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
@@ -17,7 +17,7 @@ provided by your favourite framework, like Bootstrap, Tailwind or similar. You c
 * Customizeable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Small footprint, JS + CSS less than 10k minified; Without beep sound ~5k.
+* Very small footprint, JS + CSS > ~14kb minified
 
 ## Dialogs
 <table>
@@ -44,25 +44,6 @@ Returns promise, ex:
 ```javascript
 Dlg.alert('Lorem ipsum ...').then(answer => { 
   console.log(answer) //always true 
-})
-```
-
-</td>
-</tr>
-<tr>
-<td>
-
-```confirm()```
-
-</td>
-<td><img src="assets/confirm.png" width="150"></td>
-<td>
-
-Returns promise, ex: 
-
-```javascript
-Dlg.confirm('Lorem ipsum ...').then(answer => { 
-  console.log(answer) //true or false
 })
 ```
 </td>
@@ -129,6 +110,30 @@ wait.close()
 
 </td>
 </tr>
+
+<tr>
+<td>
+
+```input()```
+
+</td>
+<td><img src="assets/input.png" width="150"></td>
+<td>
+Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }```
+```javascript
+Dlg.input('Lorem ipsum ...', options).then(state) => {
+ ... 
+})
+```
+You can define a callback in options or DEFAULTS, to determine if the user can submit :
+```javascriptcallback: function(state, dialog) { 
+  return state.firstname !== '' 
+})
+```
+
+</td>
+</tr>
+
 </table>
 
 ## Usage
@@ -149,96 +154,5 @@ Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 ```
-
-To wait for user response and do something according to what it is, use the returned promise :
-
-```javascript
-Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit').then(answer => {
-  console.log('The answer was ' + (answer ? 'Yes' : 'No'))
-})
-```
-
-## Change defaults
-All dialogs have som basic defaults which can be altered
-
-```javascript
-let defaults = {
-  headers: {
-    alert: 'Alert',
-    error: 'Error',
-    confirm: 'Confirm',
-    information: 'Information',
-    bell: 'Notice'
-  },
-  icons: {
-    alert: '⚠',
-    error: '⛔',
-    confirm: '✔️',
-    information: '💡',
-    bell: '🔔',
-    wait: '⚙️'
-  },
-  buttons: {
-    captions: {
-      ok: 'Ok',
-      cancel: 'Cancel',
-      yes: 'Yes',
-      no: 'No'
-    },
-    classes: {
-      ok: '',
-      cancel: '',
-      yes: '',
-      no: ''
-    }
-  }
-}
-```
-### DEFAULTS examples
-
-If you want to change the confirm yes / no buttons to for example something different in spanish:
-
-```javascript
-Dlg.DEFAULTS.buttons.captions.yes = 'Aceptar'
-Dlg.DEFAULTS.buttons.captions.no = 'Cancelar'
-```
-If you want to use an image instead of the default unicode symbol, for example a nicer information glyph :
-
-```javascript
-Dlg.DEFAULTS.icons.information = '<img src="myglyphs/information.png">'
-```
-If you want to show a bootstrap styled button instead of a neutral standard button :
-
-```javascript
-Dlg.DEFAULTS.buttons.classes.ok = 'btn btn-sm btn-success'
-```
-
-## Options on the fly
-Changing defaults are global, if you just want to style a single dialog "on the fly", you can pass options with the same structure as the defaults 
-literal, only the desired differences are needed :
-
-```javascript
-Dlg.alert('Lorem ipsum dolor sit amet, consectetur ...', {
-  headers: { alert: '<strong>Merry X-mas</strong>' },
-  icons: { alert : '🎄' },
-  buttons: {
-    classes: {
-      ok: 'btn btn-md btn-success'
-    }
-  }
-})
-```
-![Custom](assets/custom-alert.png "Example of alert with options")
-
-Another example, using the FontAwesome ```fa-info-circle``` icon, instead of unicode :
-
-```javascript
-Dlg.information('Lorem ipsum dolor sit amet, consectetur adipiscing elit', {
-  headers: { information: 'Did you know ...?' },
-  icons: { information : '<i class="fa fa-info-circle fa-lg text-primary"></i>' },
-})
-```
-
-![Custom](assets/information-with-fa-icon.png "Example of Info with custom icon and alternative header")
 
 
