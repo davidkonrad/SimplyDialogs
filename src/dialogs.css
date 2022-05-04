@@ -4,10 +4,11 @@ dialog {
   padding: 1rem;
   border-radius: 6px;
   box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.25);
-	min-width: 15vw;
-  max-width: 40vw;
+	min-width: 20vw;
+  max-width: 50vw;
 	position: fixed;
 	margin: auto auto;
+	margin-top: 9vh !important;
 	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 	line-height: 1.5;
 }
@@ -35,9 +36,11 @@ dialog.close {
 } 
 
 dialog span.dialog-icon {
+	font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
 	font-size: xxx-large;
 	margin-right: 15px;
 	float: left;
+	display: inline-block;
 }
 
 @keyframes spin {
@@ -51,21 +54,28 @@ dialog span.dialog-spinner {
 	animation: spin 2s infinite linear;
 }
 
+dialog h4 {
+	font-size: x-large;
+	margin: 0 0 5px 0;
+}
+
 dialog .dialog-actions {
 	width: 100%;
 	text-align: right;
 	float: right;
 	margin: 6px;
-}
-
-dialog h4 {
-	font-size: xx-large;
-	margin: 0 0 5px 0;
+	margin-top: 1em;
+	display: inline-block;
 }
 
 dialog .dialog-message {
-	word-wrap: break-word;
-	margin-top: 0.5em;
+	overflow-wrap: anywhere;
+	white-space: break-spaces;
+	margin-bottom: 1em;
+	float: none;
+	margin-top: 1em !important;
+	width: auto;
+	height: auto;	
 }
 
 dialog button {
@@ -73,4 +83,37 @@ dialog button {
 	padding-right: 16px;
 }
 
+dialog form.dialog-input {
+	float: none;
+	clear: both;
+	display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+	height: auto;	
+	width: auto;
+}
+
+dialog form.dialog-input div {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+dialog form.dialog-input div label:not(.inline) {
+	margin-left: 1rem;
+	margin-right: 0.7rem;
+}
+
+dialog form.dialog-input div { 
+	white-space: nowrap;
+}
+
+dialog form.dialog-input div label.inline {
+	margin-left: 0.3rem;
+	margin-bottom: 0;
+}
+
+dialog .dialog-input div input:not(.inline),
+dialog .dialog-input div textarea,
+dialog .dialog-input div select {
+	width: 97%;
+}
 
