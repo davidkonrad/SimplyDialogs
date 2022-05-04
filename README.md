@@ -37,13 +37,14 @@ provided by your favourite framework, like Bootstrap, MaterializeCSS or similar.
 
 ```javascript
 Dlg.alert('Lorem ipsum ...')
+Dlg.alert('Lorem ipsum ...', options)
 ```
 
 Returns promise, ex: 
 
 ```javascript
 Dlg.alert('Lorem ipsum ...').then(answer => { 
-  console.log(answer) //always true 
+  console.log(answer) //true, false if closed with ESC
 })
 ```
 </td>
@@ -85,7 +86,7 @@ Same as ```alert()```
 
 Same as ```alert()```
 
-Produces a "beep", if you not want the beep, use ```dialogs.wb.min.js```. The embedded ```data:audio/wav;base64``` takes up around 4k.  
+Produces a "beep"; if you not need the beep you can remove it from ```defaults```, i.e ```DEFAULTS.beep = undefined``` and save around 4k.  
 
 </td>
 </tr>
@@ -102,9 +103,7 @@ Does not return a promise, but a function you can close the wait dialog with :
 
 ```javascript
 const wait = Dlg.wait('Lorem ipsum ...')
-//
 //do something in code
-//
 wait.close()
 ```
 
@@ -125,8 +124,9 @@ Dlg.input('Lorem ipsum ...', options).then(state) => {
  ... 
 })
 ```
-You can define a callback in options or DEFAULTS, to determine if the user can submit :
-```javascriptcallback: function(state, dialog) { 
+You can define a callback in options or ```DEFAULTS```, to determine if the user can submit :
+```javascript
+callback: function(state, dialog) { 
   return state.firstname !== '' 
 })
 ```
