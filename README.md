@@ -39,9 +39,7 @@ provided by your favourite framework, like Bootstrap, MaterializeCSS or similar.
 Dlg.alert('Lorem ipsum ...')
 Dlg.alert('Lorem ipsum ...', options)
 ```
-
 Returns promise, ex: 
-
 ```javascript
 Dlg.alert('Lorem ipsum ...').then(answer => { 
   console.log(answer) //true, false if closed with ESC
@@ -119,12 +117,15 @@ wait.close()
 <td><img src="assets/input.png" width="150"></td>
 <td>
 Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }```
+
 ```javascript
 Dlg.input('Lorem ipsum ...', options).then(state) => {
  ... 
 })
 ```
+
 You can define a callback in options or ```DEFAULTS```, to determine if the user can submit :
+
 ```javascript
 callback: function(state, dialog) { 
   return state.firstname !== '' 
