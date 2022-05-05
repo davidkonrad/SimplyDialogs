@@ -136,7 +136,7 @@ wait.close()
 </td>
 <td><img src="assets/input.png" width="150"></td>
 <td>
-Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }``` 
+Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }```
 
 ```javascript
 Dlg.input('Lorem ipsum ...', options).then(state) => {
