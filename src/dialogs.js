@@ -71,7 +71,7 @@ const SimplyDialogs = (function(document) {
 	const isObject = function(item) {
 		return (item && typeof item === 'object' && !Array.isArray(item))
 	}
-	function parseOptions(target, ...sources) {
+	const parseOptions = function(target, ...sources) {
 		if (!sources.length) return target
 		const source = sources.shift()
 		if (isObject(target) && isObject(source)) {
