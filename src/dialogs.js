@@ -90,6 +90,10 @@ const SimplyDialogs = (function(document) {
 	const initDialog = function(dialog, type, options) {
 		let use = JSON.parse(JSON.stringify(defaults))
 		const popBtn = function(name) {
+			if (!use.buttons.captions[name]) {
+				dialog.querySelector(`.dialog-${name}`).style.display = 'none'
+				return
+			}
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.classes[name]) dialog.querySelector(`.dialog-${name}`).classList.add(...use.buttons.classes[name].split(' '))
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
