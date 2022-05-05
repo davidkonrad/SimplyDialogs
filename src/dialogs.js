@@ -280,7 +280,7 @@ const SimplyDialogs = (function(document) {
 		const getLabel = function(label, forId) {
 			const l = document.createElement('LABEL')
       l.htmlFor = forId
-			l.innerHTML = label
+			l.innerHTML = label || ''
 			l.className = labelClass
 			return l
 		}
@@ -289,8 +289,8 @@ const SimplyDialogs = (function(document) {
 			count++
 			const fd = div()
 			const fi = document.createElement(type.toUpperCase())
-			fi.name = name
 			fi.id = type.toLowerCase() + '_' + count
+			fi.name = name || fi.id
 			fi.className = inputClass
 			if (count === 1) fi.setAttribute('autofocus', 'autofocus')
 			if (opt) for (const [key, value] of Object.entries(opt)) {
@@ -349,7 +349,7 @@ const SimplyDialogs = (function(document) {
 				r.id = 'radio_' + count
 				r.type = 'radio'
 				r.value = o.value
-				r.name = name
+				r.name = name || r.id
 				if (callback) r.addEventListener('change', cb)
 				const li = getLabel(o.label, r.id)
 				li.className = 'inline'
