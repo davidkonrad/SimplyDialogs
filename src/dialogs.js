@@ -68,19 +68,32 @@ const SimplyDialogs = (function(document) {
 		return cnt
 	}
 
+	const isObject = function(item) {
+		return (item && typeof item === 'object' && !Array.isArray(item))
+	}
+	function parseOptions(target, ...sources) {
+		if (!sources.length) return target
+		const source = sources.shift()
+		if (isObject(target) && isObject(source)) {
+			for (const key in source) {
+				if (isObject(source[key])) {
+					if (!target[key]) Object.assign(target, { [key]: {} })
+					parseOptions(target[key], source[key])
+				} else {
+					Object.assign(target, { [key]: source[key] })
+				}
+			}
+		}
+		return parseOptions(target, ...sources)
+	}
+
 	const initDialog = function(dialog, type, options) {
-		let use = Object.assign({}, defaults) 
+		let use = JSON.parse(JSON.stringify(defaults))
 		const popBtn = function(name) {
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.classes[name]) dialog.querySelector(`.dialog-${name}`).classList.add(...use.buttons.classes[name].split(' '))
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
-		if (options) Object.keys(options).forEach(key => {
-			if (options[key] instanceof Object) {
-				use[key] = Object.assign({}, use[key], options[key])
-			} else {
-				use[key] = options[key]
-			}
-		})
+		if (options) parseOptions(use, options)
 		if (type !== 'wait') dialog.querySelector('.dialog-header').innerHTML = use.headers[type]
 		dialog.querySelector('.dialog-icon').innerHTML = use.icons[type]
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
