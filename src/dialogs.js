@@ -92,7 +92,7 @@ const SimplyDialogs = (function(document) {
 			document.head.appendChild(dialog.backdrop)
 		}
 		if (use.enterSubmit) dialog.addEventListener('keypress', (e) => { 
-			if (e.which === 13) {
+			if (e.which === 13 && e.target.nodeName !== 'TEXTAREA') {
 				const c = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false })
 				if (dialog.querySelector('.dialog-ok')) dialog.querySelector('.dialog-ok').dispatchEvent(c)
 				if (dialog.querySelector('.dialog-yes')) dialog.querySelector('.dialog-yes').dispatchEvent(c)

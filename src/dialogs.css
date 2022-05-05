@@ -85,7 +85,6 @@ dialog button {
 
 dialog form.dialog-input {
 	float: none;
-	clear: both;
 	display: grid;
   grid-template-columns: auto minmax(0, 1fr);
 	height: auto;	
@@ -98,8 +97,8 @@ dialog form.dialog-input div {
 }
 
 dialog form.dialog-input div label:not(.inline) {
-	margin-left: 1rem;
-	margin-right: 0.7rem;
+	margin-left: 0.1rem;
+	margin-right: 0.8rem;
 }
 
 dialog form.dialog-input div { 
