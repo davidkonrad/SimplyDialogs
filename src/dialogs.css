@@ -86,19 +86,34 @@ dialog button {
 dialog form.dialog-input {
 	float: none;
 	display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
 	height: auto;	
 	width: auto;
 }
-
-dialog form.dialog-input div {
-	display: inline-block;
-	margin-bottom: 5px;
+dialog form.dialog-input.top {
+	grid-template-rows: auto minmax(0, 1fr);
+}
+dialog form.dialog-input.top input:not(.inline) {
+	margin-bottom: 1rem;
 }
 
-dialog form.dialog-input div label:not(.inline) {
+dialog form.dialog-input.left {
+	grid-template-columns: auto minmax(0, 1fr);
+}
+dialog form.dialog-input.left label:not(.inline) {
 	margin-left: 0.1rem;
-	margin-right: 0.8rem;
+	margin-right: 0.7rem;
+}
+
+dialog .dialog-input.full-width div input:not(.inline),
+dialog .dialog-input.full-width div textarea,
+dialog .dialog-input.full-width div select {
+	width: 97%;
+}
+
+
+/*
+dialog form.dialog-input div {
+	display: inline-block;
 }
 
 dialog form.dialog-input div { 
@@ -115,4 +130,4 @@ dialog .dialog-input div textarea,
 dialog .dialog-input div select {
 	width: 97%;
 }
-
+*/
