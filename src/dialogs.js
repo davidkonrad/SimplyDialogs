@@ -69,10 +69,8 @@ const SimplyDialogs = (function(document) {
 		return cnt
 	}
 
-	const isObject = function(item) {
-		return (item && typeof item === 'object' && !Array.isArray(item))
-	}
 	const parseOptions = function(target, ...sources) {
+		const isObject = (item) => { return (item && typeof item === 'object' && !Array.isArray(item)) }
 		if (!sources.length) return target
 		const source = sources.shift()
 		if (isObject(target) && isObject(source)) {
@@ -420,6 +418,4 @@ const SimplyDialogs = (function(document) {
 	}
 	
 })(document);
-	
-
 
