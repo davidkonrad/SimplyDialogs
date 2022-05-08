@@ -110,24 +110,3 @@ dialog .dialog-input.full-width div select {
 	width: 97%;
 }
 
-
-/*
-dialog form.dialog-input div {
-	display: inline-block;
-}
-
-dialog form.dialog-input div { 
-	white-space: nowrap;
-}
-
-dialog form.dialog-input div label.inline {
-	margin-left: 0.3rem;
-	margin-bottom: 0;
-}
-
-dialog .dialog-input div input:not(.inline),
-dialog .dialog-input div textarea,
-dialog .dialog-input div select {
-	width: 97%;
-}
-*/
