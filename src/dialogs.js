@@ -97,7 +97,7 @@ const SimplyDialogs = (function(document) {
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
 		if (options) parseOptions(use, options)
-		if (type !== 'wait') dialog.querySelector('.dialog-header').innerHTML = use.headers[type]
+		if (type !== 'wait') dialog.querySelector('#dialog-header').innerHTML = use.headers[type]
 		dialog.querySelector('.dialog-icon').innerHTML = use.icons[type] || ''
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
 		if (use.classes && typeof use.classes === 'string') dialog.classList.add(...use.classes.split(' '))
@@ -110,9 +110,9 @@ const SimplyDialogs = (function(document) {
 		dialog.addEventListener('keypress', (e) => { 
 			if (e.which === 13 && e.target.nodeName !== 'TEXTAREA') {
 				if (use.enterSubmit === true) {
-					if (dialog.querySelector('.dialog-ok')) dialog.querySelector('.dialog-ok').dispatchEvent(
-						new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false })
-					)
+					const me = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false })
+					if (dialog.querySelector('.dialog-ok')) dialog.querySelector('.dialog-ok').dispatchEvent(me)
+					if (dialog.querySelector('.dialog-yes')) dialog.querySelector('.dialog-yes').dispatchEvent(me)
 				}
 				e.preventDefault()
 			}
@@ -130,10 +130,10 @@ const SimplyDialogs = (function(document) {
 	}
 
 	const genericHTML = `
-		<dialog id="dialog-generic">
-		  <h4 class="dialog-header"></h4>
+		<dialog id="dialog-generic" role="dialog" aria-labelledby="dialog-header dialog-message">
+		  <h4 id="dialog-header"></h4>
 			<span class="dialog-icon"></span>
-		  <p class="dialog-message"></p>
+		  <p id="dialog-message"></p>
 		  <div class="dialog-actions">
 		    <button role="submit" class="dialog-ok" autofocus></button>
 		  </div>
@@ -146,7 +146,7 @@ const SimplyDialogs = (function(document) {
 			const cnt = getCnt(genericHTML)
 			const dialog = gebi('dialog-generic')
 			initDialog(dialog, type, options)		
-			dialog.querySelector('.dialog-message').innerHTML = message
+			dialog.querySelector('#dialog-message').innerHTML = message
 			dialog.showModal()
 			const ret = function(val) {
 				closeDialog(dialog, cnt)
@@ -179,7 +179,7 @@ const SimplyDialogs = (function(document) {
 			const cnt = getCnt(genericHTML)
 			const dialog = gebi('dialog-generic')
 			options = initDialog(dialog, 'bell', options)
-			dialog.querySelector('.dialog-message').innerHTML = message
+			dialog.querySelector('#dialog-message').innerHTML = message
 			dialog.showModal()
 			if (options.bell && typeof options.bell === 'string') {
 				dialog.insertAdjacentHTML('afterbegin', `<audio autoplay="autoplay"><source	src="${options.bell}"></audio>`)
@@ -196,10 +196,10 @@ const SimplyDialogs = (function(document) {
 
 //confirm
 	const confirmHTML = `
-		<dialog id="dialog-confirm">
-		  <h4 class="dialog-header"></h4>
+		<dialog id="dialog-confirm" role="dialog" aria-labelledby="dialog-header dialog-message">
+		  <h4 id="dialog-header"></h4>
 			<span class="dialog-icon"></span>
-		  <p class="dialog-message"></p>
+		  <p id="dialog-message"></p>
 		  <div class="dialog-actions">
 		    <button role="submit" class="dialog-yes" autofocus></button>
 		    <button role="button" class="dialog-no"></button>
@@ -212,7 +212,7 @@ const SimplyDialogs = (function(document) {
 			const cnt = getCnt(confirmHTML)
 			const dialog = gebi('dialog-confirm')
 			initDialog(dialog, 'confirm', options)
-			dialog.querySelector('.dialog-message').innerHTML = message
+			dialog.querySelector('#dialog-message').innerHTML = message
 			dialog.showModal()
 			const ret = function(val) {
 				closeDialog(dialog, cnt)
@@ -227,9 +227,9 @@ const SimplyDialogs = (function(document) {
 
 //wait
 	const waitHTML = `
-		<dialog id="dialog-wait">
+		<dialog id="dialog-wait" role="dialog" aria-labelledby="dialog-message">
 			<span class="dialog-icon dialog-spinner"></span>
-		  <p class="dialog-message"></p>
+		  <p id="dialog-message"></p>
 		</dialog>
 	`;
 
@@ -237,7 +237,7 @@ const SimplyDialogs = (function(document) {
 		const cnt = getCnt(waitHTML)
 		const dialog = gebi('dialog-wait')
 		initDialog(dialog, 'wait', options)		
-		dialog.querySelector('.dialog-message').innerHTML = message
+		dialog.querySelector('#dialog-message').innerHTML = message
 		dialog.addEventListener('cancel', (e) => { e.preventDefault() })
 		dialog.showModal()
 		return { 
@@ -249,10 +249,10 @@ const SimplyDialogs = (function(document) {
 
 //input
 	const inputHTML = `
-		<dialog id="dialog-input">
-		  <h4 class="dialog-header"></h4>
+		<dialog id="dialog-input" role="dialog" aria-labelledby="dialog-header dialog-message">
+		  <h4 id="dialog-header"></h4>
 			<span class="dialog-icon"></span>
-		  <p class="dialog-message"></p>
+		  <p id="dialog-message"></p>
 			<form class="dialog-input"></form>
 		  <div class="dialog-actions">
 		    <button role="submit" class="dialog-ok" autofocus></button>
@@ -382,7 +382,7 @@ const SimplyDialogs = (function(document) {
 		return new Promise(function(resolve) {
 			options = initDialog(dialog, 'input', options)
 			if (options.input.formLayout) dialog.querySelector('.dialog-input').classList.add(...options.input.formLayout.split(' '))
-			dialog.querySelector('.dialog-message').innerHTML = message
+			dialog.querySelector('#dialog-message').innerHTML = message
 			userCallback = options.input.callback
 			if (userCallback) dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled')
 			labelClass = options.input.classes.label

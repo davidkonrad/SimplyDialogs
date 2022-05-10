@@ -68,7 +68,7 @@ dialog .dialog-actions {
 	display: inline-block;
 }
 
-dialog .dialog-message {
+dialog #dialog-message {
 	overflow-wrap: anywhere;
 	white-space: break-spaces;
 	margin-bottom: 1em;
@@ -92,6 +92,7 @@ dialog form.dialog-input {
 dialog form.dialog-input.top {
 	grid-template-rows: auto minmax(0, 1fr);
 }
+
 dialog form.dialog-input.top input:not(.inline) {
 	margin-bottom: 1rem;
 }
@@ -99,9 +100,11 @@ dialog form.dialog-input.top input:not(.inline) {
 dialog form.dialog-input.left {
 	grid-template-columns: auto minmax(0, 1fr);
 }
+
 dialog form.dialog-input.left div {
 	margin-bottom: 0.5rem;
 }
+
 dialog form.dialog-input.left label:not(.inline) {
 	margin-left: 0.1rem;
 	margin-right: 1rem;
