@@ -45,7 +45,7 @@ dialog span.dialog-icon {
 
 @keyframes spin {
 	to {
-		transform: rotate(360deg);
+		transform: rotate(359deg);
 	}
 }
 
