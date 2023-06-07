@@ -60,7 +60,6 @@ dialog h4 {
 }
 
 dialog .dialog-actions {
-	width: 100%;
 	text-align: right;
 	float: right;
 	margin: 6px;
@@ -115,4 +114,56 @@ dialog .dialog-input.full-width div textarea,
 dialog .dialog-input.full-width div select {
 	width: 97%;
 }
+
+dialog.xsmall, dialog.xs {
+	width: 18vw !important;
+	min-width: 18vw !important;
+  max-width: 18vw !important;
+	height: 15vh !important;
+	min-height: 15vh !important;
+  max-height: 15vh !important;
+	overflow: hidden;
+}
+dialog.small, dialog.sm {
+	width: 22vw !important;
+	min-width: 22vw !important;
+  max-width: 22vw !important;
+	height: 18vh !important;
+	min-height: 18vh !important;
+  max-height: 18vh !important;
+	overflow: hidden;
+}
+dialog.medium, dialog.md {
+	width: 34vw !important;
+	min-width: 34vw !important;
+  max-width: 34vw !important;
+	height: 31vh !important;
+	min-height: 31vh !important;
+  max-height: 31vh !important;
+	overflow: hidden;
+}
+dialog.large, dialog.lg {
+	width: 55vw !important;
+	min-width: 55vw !important;
+  max-width: 55vw !important;
+	height: 52vh !important;
+	min-height: 52vh !important;
+  max-height: 52vh !important;
+	overflow: hidden;
+}
+
+dialog.xsmall .dialog-actions,
+dialog.xs .dialog-actions,
+dialog.small .dialog-actions,
+dialog.sm .dialog-actions,
+dialog.medium .dialog-actions,
+dialog.md .dialog-actions,
+dialog.large .dialog-actions,
+dialog.lg .dialog-actions {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+
 
