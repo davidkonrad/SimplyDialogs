@@ -1,6 +1,6 @@
 /*
 	SimplyDialogs
-	(c) 2022 David Konrad 
+	(c) 2022- present David Konrad 
 	https://github.com/davidkonrad/simplydialogs
 	https://simplydialogs.github.io
 */
@@ -9,7 +9,7 @@
 
 const SimplyDialogs = (function(document) {
 	
-	let defaults = {
+	const defaults = {
 		enterSubmit: true,
 		backdrop: undefined,
 		classes: '',
