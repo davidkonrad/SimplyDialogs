@@ -327,7 +327,7 @@ const SimplyDialogs = (function(document) {
 		const getCustomOptions = function(opt) {
 			const ret = {}
 			for (const [key, value] of Object.entries(opt)) {
-				if (!['type', 'inputType', 'label', 'name'].includes(key)) ret[key] = value 
+				if (!['type', 'inputType', 'label', 'name', 'options'].includes(key)) ret[key] = value 
 			}
 			return ret	
 		}
@@ -349,16 +349,14 @@ const SimplyDialogs = (function(document) {
 		const createSelect = function(label, name, options, callback, opt) {
 			const s = createFormTag('select', name, label, opt)
 			if (callback) s.f.querySelector('select').addEventListener('change', cb)
-			options.forEach(o => {
-				const opt = document.createElement('OPTION')
-				opt.innerText = o.label
-				opt.value = o.value
-				s.f.querySelector('select').append(opt)
+			options.forEach(o => { 
+				s.f.querySelector('select').options.add( new Option(o.label, o.value) ) 
 			})
+			if (opt && opt.value) s.f.querySelector('select').value = opt.value
 			dialog.querySelector('.dialog-input').append(s.l, s.f)
 		}
 
-		const createRadio = function(label, name, options, callback) {
+		const createRadio = function(label, name, options, callback, opt) {
 			const dr = div()
 			options.forEach(o => {
 				count++
@@ -376,6 +374,10 @@ const SimplyDialogs = (function(document) {
 			const l = getLabel(label, '')
 			const dl = div()
 			dl.append(l)
+			if (opt && opt.value) {
+				const ci = dr.querySelector('input[value="' + opt.value + '"]')
+				if (ci) ci.setAttribute('checked', 'checked')
+			}
 			dialog.querySelector('.dialog-input').append(dl, dr)
 		}
 
@@ -391,7 +393,7 @@ const SimplyDialogs = (function(document) {
 				if (i.type === 'input') createInput(i.inputType, i.label, i.name, userCallback, getCustomOptions(i))
 				if (i.type === 'textarea') createTextarea(i.label, i.name, userCallback, getCustomOptions(i))
 				if (i.type === 'select') createSelect(i.label, i.name, i.options, userCallback, getCustomOptions(i))
-				if (i.type === 'radio') createRadio(i.label, i.name, i.options, userCallback)
+				if (i.type === 'radio') createRadio(i.label, i.name, i.options, userCallback, getCustomOptions(i))
 			})
 			dialog.showModal()
 			const ret = function(val) {

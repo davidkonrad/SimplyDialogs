@@ -1,11 +1,11 @@
 dialog {
-  background: #fff;
-  border: none;
-  padding: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.25);
+	background: #fff;
+	border: none;
+	padding: 1rem;
+	border-radius: 6px;
+	box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.25);
 	min-width: 20vw;
-  max-width: 50vw;
+	max-width: 50vw;
 	position: fixed;
 	margin: auto auto;
 	margin-top: 9vh;
@@ -118,91 +118,92 @@ dialog .dialog-input.full-width div select {
 dialog.xsmall, dialog.xs {
 	width: 18vw !important;
 	min-width: 18vw !important;
-  max-width: 18vw !important;
+	max-width: 18vw !important;
 	height: 15vh !important;
 	min-height: 15vh !important;
-  max-height: 15vh !important;
+	max-height: 15vh !important;
 	overflow: hidden;
 }
 dialog.xsmall-width, dialog.xs-width {
 	width: 18vw !important;
 	min-width: 18vw !important;
-  max-width: 18vw !important;
+	max-width: 18vw !important;
 }
 dialog.xsmall-height, dialog.xs-height {
 	height: 15vh !important;
 	min-height: 15vh !important;
-  max-height: 15vh !important;
+	max-height: 15vh !important;
 }
 
 dialog.small, dialog.sm {
 	width: 22vw !important;
 	min-width: 22vw !important;
-  max-width: 22vw !important;
+	max-width: 22vw !important;
 	height: 18vh !important;
 	min-height: 18vh !important;
-  max-height: 18vh !important;
+	max-height: 18vh !important;
 	overflow: hidden;
 }
 dialog.small-height, dialog.sm-height {
 	height: 18vh !important;
 	min-height: 18vh !important;
-  max-height: 18vh !important;
+	max-height: 18vh !important;
 }
+
 dialog.small-width, dialog.sm-width {
 	width: 22vw !important;
 	min-width: 22vw !important;
-  max-width: 22vw !important;
+	max-width: 22vw !important;
 }
 
 dialog.medium, dialog.md {
 	width: 34vw !important;
 	min-width: 34vw !important;
-  max-width: 34vw !important;
+	max-width: 34vw !important;
 	height: 31vh !important;
 	min-height: 31vh !important;
-  max-height: 31vh !important;
+	max-height: 31vh !important;
 	overflow: hidden;
 }
 dialog.medium-height, dialog.md-height {
 	height: 31vh !important;
 	min-height: 31vh !important;
-  max-height: 31vh !important;
+	max-height: 31vh !important;
 }
 dialog.medium-width, dialog.md-width {
 	width: 34vw !important;
 	min-width: 34vw !important;
-  max-width: 34vw !important;
+	max-width: 34vw !important;
 }
 
 dialog.large, dialog.lg {
 	width: 55vw !important;
 	min-width: 55vw !important;
-  max-width: 55vw !important;
+	max-width: 55vw !important;
 	height: 52vh !important;
 	min-height: 52vh !important;
-  max-height: 52vh !important;
+	max-height: 52vh !important;
 	overflow: hidden;
 }
 dialog.large-height, dialog.lg-height {
 	height: 52vh !important;
 	min-height: 52vh !important;
-  max-height: 52vh !important;
+	max-height: 52vh !important;
 }
 dialog.large-width, dialog.lg-width {
-	height: 55vh !important;
-	min-height: 55vh !important;
-  max-height: 55vh !important;
+	width: 55vw !important;
+	min-width: 55vw !important;
+	max-width: 55vw !important;
 }
 
 dialog.fullsize {
 	margin-top: 0;
 	width: 100vw !important;
 	min-width: 100vw !important;
-  max-width: 100vw !important;
+	max-width: 100vw !important;
 	height: 100vh !important;
 	min-height: 100vh !important;
-  max-height: 100vh !important;
+	max-height: 100vh !important;
 	overflow: hidden;
 }
 
