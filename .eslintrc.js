@@ -7,17 +7,6 @@ module.exports = {
 		"root": true,
     "extends": "eslint:recommended",
     "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
-				"$": "readonly",
-				"Api": "readonly",
-				"bootbox": "readonly",
-				"hash": "readonly",
-				"dayjs": "readonly",
-				"Crudder": "readonly",
-				"SUNEDITOR": "readonly",
-				"SUNEDITOR_LANG": "readonly",
-				"ACTIVITY": "readonly",
     },
     "parserOptions": {
         "ecmaVersion": "2020",
