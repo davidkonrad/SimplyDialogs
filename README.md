@@ -1,23 +1,22 @@
-# simplydialogs
+# SimplyDialogs
 
-**Demos and documentation here -> https://simplydialogs.github.io**
+## Demos and documentation here -> https://simplydialogs.github.io
 
 A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()```, ```wait()``` and ```input()```. 
-Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, 
-Opera, Firefox and Edge (Linux & Windows 10). 
+Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, Opera, Firefox and Edge (Linux & Windows 10). 
 
-Use simplydialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals 
-provided by your favourite framework, like Bootstrap, MaterializeCSS or similar. You can customize the layout so it get the look of your theme / framework. 
+Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals provided by your favourite framework, like Bootstrap, MaterializeCSS or similar. You can customize the layout so it get the look of your theme / framework. 
 
 * No dependencies; using native &lt;dialog> element and unicode</li>
 * Truly blocking interaction with background
 * Stays in center of viewport, adjusted to message size, stays in focus while scrolling
-* Returns promises
+* Return promises
 * Support keyboard / mouse the right way
 * Customizeable
+* Stackable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Very small footprint, JS + CSS > ~14kb minified
+* Very small footprint, JS + CSS > ~17kb minified (current version v1.0.8)
 
 ## Dialogs
 <table>
