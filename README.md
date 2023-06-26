@@ -12,11 +12,11 @@ Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or w
 * Stays in center of viewport, adjusted to message size, stays in focus while scrolling
 * Return promises
 * Support keyboard / mouse the right way
-* Customizeable
+* Highly customizeable
 * Stackable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Very small footprint, JS + CSS > ~17kb minified (current version v1.0.8)
+* Very small footprint, JS + CSS > ~16.9kb minified (current version v1.0.9)
 
 ## Dialogs
 <table>
