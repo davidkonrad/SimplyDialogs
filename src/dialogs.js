@@ -100,7 +100,11 @@ const SimplyDialogs = (function(document) {
 		if (type !== 'wait') dialog.querySelector('.dialog-header').innerHTML = use.headers[type]
 		dialog.querySelector('.dialog-icon').innerHTML = use.icons[type] || ''
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
-		if (use.classes && typeof use.classes === 'string') dialog.classList.add(...use.classes.split(' '))
+		if (use.classes && typeof use.classes === 'string') {
+			dialog.classList.add(...use.classes.split(' '))
+		} else {
+			dialog.classList.add('default')
+		}
 		if (use.backdrop) {
 			dialog.backdrop = document.createElement('style')
 			dialog.backdrop.id = 'simplydialogs_' + Math.random()

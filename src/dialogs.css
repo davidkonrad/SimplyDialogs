@@ -6,11 +6,31 @@ dialog {
 	box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.25);
 	min-width: 20vw;
 	max-width: 50vw;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	line-height: 1.5;
+}
+
+dialog.default {
 	position: fixed;
 	margin: auto auto;
 	margin-top: 9vh;
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-	line-height: 1.5;
+}
+dialog.top {
+	margin-top: 5vh;
+}
+dialog.bottom {
+	margin-bottom: 5vh !important;
+}
+dialog.middle {
+  transform: translateY(-50%) !important;
+}
+dialog.left {
+	margin-left: 4vw;
+}
+dialog.right {
+	margin-right: 4vw;
+}
+dialog.center {
 }
 
 @keyframes explode { 

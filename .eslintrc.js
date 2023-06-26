@@ -7,6 +7,7 @@ module.exports = {
 		"root": true,
     "extends": "eslint:recommended",
     "globals": {
+				"SimplyDialogs": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": "2020",
