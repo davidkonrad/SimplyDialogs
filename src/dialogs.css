@@ -22,7 +22,7 @@ dialog.bottom {
 	margin-bottom: 5vh !important;
 }
 dialog.middle {
-  transform: translateY(-50%) !important;
+	transform: translateY(-50%) !important;
 }
 dialog.left {
 	margin-left: 4vw;
