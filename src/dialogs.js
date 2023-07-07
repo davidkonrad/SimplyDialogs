@@ -346,8 +346,11 @@ const SimplyDialogs = (function(document) {
 		}
 
 		const createTextarea = function(label, name, callback, opt) {
+			const value = opt.value 
+			delete opt.value;
 			const t = createFormTag('textarea', name, label, opt)
 			if (callback) t.f.querySelector('textarea').addEventListener('input', cb)
+			if (value) t.f.querySelector('textarea').textContent = value
 			dialog.querySelector('.dialog-input').append(t.l, t.f)
 		}
 
