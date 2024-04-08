@@ -11,6 +11,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 	
 	const defaults = {
 		enterSubmit: true,
+		escape: true,
 		backdrop: undefined,
 		classes: '',
 		headers: {
@@ -150,7 +151,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		return new Promise(function(resolve) {
 			const cnt = getCnt(genericHTML)
 			const dialog = cnt.querySelector('.dialog-template')
-			initDialog(dialog, type, options)		
+			options = initDialog(dialog, type, options)		
 			dialog.querySelector('.dialog-message').innerHTML = message
 			dialog.showModal()
 			const ret = function(val) {
@@ -159,7 +160,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			}
 			dialog.querySelector('.dialog-ok').onclick = () => { ret(true) }
 			dialog.addEventListener('close', () => { ret(true) })
-			dialog.addEventListener('cancel', () => { ret(false) })
+			dialog.addEventListener('cancel', (e) => { 
+				if (!options.escape) {
+					e.preventDefault()
+				} else {
+					ret(false) 
+				}
+			})
 		})
 	}
 
@@ -195,7 +202,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			}
 			dialog.querySelector('.dialog-ok').onclick = () => { ret(true) }
 			dialog.addEventListener('close', () => { ret(true) })
-			dialog.addEventListener('cancel', () => { ret(false) })
+			dialog.addEventListener('cancel', (e) => { 
+				if (!options.escape) {
+					e.preventDefault()
+				} else {
+					ret(false) 
+				}
+			})
 		})
 	}
 
@@ -216,7 +229,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		return new Promise(function(resolve) {
 			const cnt = getCnt(confirmHTML)
 			const dialog = cnt.querySelector('.dialog-template')
-			initDialog(dialog, 'confirm', options)
+			options = initDialog(dialog, 'confirm', options)
 			dialog.querySelector('.dialog-message').innerHTML = message
 			dialog.showModal()
 			const ret = function(val) {
@@ -226,7 +239,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			dialog.querySelector('.dialog-yes').onclick = () => { ret(true) }
 			dialog.querySelector('.dialog-no').onclick = () => { ret(false) }
 			dialog.addEventListener('close', () => { ret(true) })
-			dialog.addEventListener('cancel', () => { ret(false) })
+			dialog.addEventListener('cancel', (e) => { 
+				if (!options.escape) {
+					e.preventDefault()
+				} else {
+					ret(false) 
+				}
+			})
 		})
 	}
 
@@ -244,7 +263,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		const msg = dialog.querySelector('.dialog-message')
 		initDialog(dialog, 'wait', options)		
 		msg.innerHTML = message
-		dialog.addEventListener('cancel', (e) => { e.preventDefault() })
+		dialog.addEventListener('cancel', (e) => { e.preventDefault() }) //wait are always not cancelable by ESC
 		dialog.showModal()
 		return { 
 			close: function() {
@@ -418,7 +437,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			dialog.querySelector('.dialog-ok').onclick = () => { ret(true) }
 			dialog.querySelector('.dialog-cancel').onclick = () => { ret(false) }
 			dialog.addEventListener('close', () => { ret(true) })
-			dialog.addEventListener('cancel', () => { ret(false) })
+			dialog.addEventListener('cancel', (e) => { 
+				if (!options.escape) {
+					e.preventDefault()
+				} else {
+					ret(false) 
+				}
+			})
 		})
 	}
 	
