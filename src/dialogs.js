@@ -7,7 +7,7 @@
 
 "use strict";
 
-const SimplyDialogs = (function(document) {
+const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-vars
 	
 	const defaults = {
 		enterSubmit: true,
@@ -241,13 +241,20 @@ const SimplyDialogs = (function(document) {
 	const wait = function(message, options) {
 		const cnt = getCnt(waitHTML)
 		const dialog = cnt.querySelector('.dialog-template')
+		const msg = dialog.querySelector('.dialog-message')
 		initDialog(dialog, 'wait', options)		
-		dialog.querySelector('.dialog-message').innerHTML = message
+		msg.innerHTML = message
 		dialog.addEventListener('cancel', (e) => { e.preventDefault() })
 		dialog.showModal()
 		return { 
 			close: function() {
 				closeDialog(dialog, cnt)
+			},
+			addText: function(html) {
+				msg.innerHTML += html
+			},
+			setText: function(html) {
+				msg.innerHTML = html
 			}
 		}				
 	}
