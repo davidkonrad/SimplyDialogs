@@ -16,7 +16,7 @@ Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or w
 * Stackable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Very small footprint, JS + CSS > ~16.9kb minified (current version v1.0.9)
+* Very small footprint, JS + CSS > ~17.3kb minified (current version v1.0.11)
 
 ## Dialogs
 <table>
@@ -151,6 +151,17 @@ callback: function(state, dialog) {
 })
 ```
 
+If needed, you can pass a promise instead :
+
+```javascript
+promise: function(state, dialog) { 
+  return new Promise((resolve) => {
+    resolve ( true || false )
+  })
+})
+```
+
+
 </td>
 </tr>
 
@@ -160,8 +171,8 @@ callback: function(state, dialog) {
 Include the script and CSS.
 
 ```html
-<script src="path/to/simplydialogs/dist/dialogs.min.js"></script>
-<link rel="stylesheet" type="text/css" href="path/to/simplydialogs/dist/dialogs.min.css">
+<script src="path/to/simplydialogs/dist/SimplyDialogs.min.js"></script>
+<link rel="stylesheet" type="text/css" href="path/to/simplydialogs/dist/SimplyDialogs.min.css">
 ```
 
 That makes a SimplyDialogs function available. For convenience, create a shorthand alias :
