@@ -3,6 +3,7 @@
 	(c) 2022- present David Konrad 
 	https://github.com/davidkonrad/simplydialogs
 	https://simplydialogs.github.io
+	MIT License
 */
 
 "use strict";
@@ -57,7 +58,8 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			],
 			callback: function(state) {
 				return state.input && state.input.length > 1
-			}
+			},
+			promise: undefined
 		}
 	}
 
@@ -316,10 +318,19 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		}
 
 		const cb = function() {
-			if (userCallback(getFormState(), dialog) === true) {
-				dialog.querySelector('.dialog-ok').removeAttribute('disabled')
-			} else {
-				dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled')
+			const process = function(result) {
+				if (result) {
+					dialog.querySelector('.dialog-ok').removeAttribute('disabled')
+				} else {
+					dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled')
+				}
+			}
+			if (userCallback.callback) {
+				process( userCallback.callback(getFormState(), dialog) )
+			} else if (userCallback.promise) {
+				userCallback.promise(getFormState(), dialog).then(function(result) {
+					process(result)
+				})
 			}
 		}
 
@@ -419,7 +430,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			options = initDialog(dialog, 'input', options)
 			if (options.input.formLayout) dialog.querySelector('.dialog-input').classList.add(...options.input.formLayout.split(' '))
 			dialog.querySelector('.dialog-message').innerHTML = message
-			userCallback = options.input.callback
+			userCallback = options.input.callback || options.input.promise ? { callback: options.input.callback, promise: options.input.promise } : undefined
 			if (userCallback) dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled')
 			labelClass = options.input.classes.label
 			inputClass = options.input.classes.input
