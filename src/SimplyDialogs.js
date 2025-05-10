@@ -354,7 +354,6 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			fi.id = type.toLowerCase() + '_' + count
 			fi.name = name || fi.id
 			fi.className = inputClass
-			if (count === 1) fi.setAttribute('autofocus', 'autofocus')
 			if (opt) for (const [key, value] of Object.entries(opt)) {
 				if (key === 'autofocus') {
 					autofocus = fi
@@ -382,9 +381,12 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 		const createInput = function(type, label, name, callback, opt) {
 			const i = createFormTag('input', name, label, opt)
-			i.f.querySelector('input').type = type
+			const el = i.f.querySelector('input')
+			el.type = type
 			if (type === 'checkbox') i.f.querySelector('input').classList.add('inline')
-			if (callback) i.f.querySelector('input').addEventListener('input', cb)
+			if (!el.hasAttribute('spellcheck') && (type === 'text' || type === 'password')) el.setAttribute('spellcheck', 'false')
+			if (!el.hasAttribute('autocomplete') && type === 'text') el.setAttribute('autocomplete', 'off')
+			if (callback) el.addEventListener('input', cb)
 			dialog.querySelector('.dialog-input').append(i.l, i.f)
 		}
 
@@ -392,8 +394,10 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			const value = opt.value 
 			delete opt.value;
 			const t = createFormTag('textarea', name, label, opt)
-			if (callback) t.f.querySelector('textarea').addEventListener('input', cb)
-			if (value) t.f.querySelector('textarea').textContent = value
+			const el = t.f.querySelector('textarea')
+			if (callback) el.addEventListener('input', cb)
+			if (value) el.textContent = value
+			if (!el.hasAttribute('spellcheck')) el.setAttribute('spellcheck', 'false')
 			dialog.querySelector('.dialog-input').append(t.l, t.f)
 		}
 
@@ -447,7 +451,12 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				if (i.type === 'radio') createRadio(i.label, i.name, i.options, userCallback, getCustomOptions(i))
 			})
 			dialog.showModal()
-			if (autofocus) autofocus.focus()
+			if (autofocus) {
+				autofocus.focus()
+			} else {
+				const fe = dialog.querySelector('input, textarea, select')
+				if (fe) fe.focus()
+			}
 			const ret = function(val) {
 				closeDialog(dialog, cnt)
 				resolve(val ? getFormState() : false)
