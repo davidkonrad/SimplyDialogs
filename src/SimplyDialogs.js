@@ -383,8 +383,8 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			const i = createFormTag('input', name, label, opt)
 			const el = i.f.querySelector('input')
 			el.type = type
-			if (type === 'checkbox') i.f.querySelector('input').classList.add('inline')
-			if (!el.hasAttribute('spellcheck') && (type === 'text' || type === 'password')) el.setAttribute('spellcheck', 'false')
+			if (type === 'checkbox') el.classList.add('inline')
+			if (!el.hasAttribute('spellcheck') && (['text','password','url'].includes(type))) el.setAttribute('spellcheck', 'false')
 			if (!el.hasAttribute('autocomplete') && type === 'text') el.setAttribute('autocomplete', 'off')
 			if (callback) el.addEventListener('input', cb)
 			dialog.querySelector('.dialog-input').append(i.l, i.f)
