@@ -299,6 +299,8 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		let userCallback = undefined
 		let labelClass = ''
 		let inputClass = ''
+		let autofocus = undefined
+
 		const cnt = getCnt(inputHTML)
 		const dialog = cnt.querySelector('.dialog-template')
 
@@ -354,7 +356,11 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			fi.className = inputClass
 			if (count === 1) fi.setAttribute('autofocus', 'autofocus')
 			if (opt) for (const [key, value] of Object.entries(opt)) {
-				fi.setAttribute(key, value)
+				if (key === 'autofocus') {
+					autofocus = fi
+				} else {
+					fi.setAttribute(key, value)
+				}
 			}
 			fd.append(fi)
 			const fl = div() 
@@ -441,6 +447,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				if (i.type === 'radio') createRadio(i.label, i.name, i.options, userCallback, getCustomOptions(i))
 			})
 			dialog.showModal()
+			if (autofocus) autofocus.focus()
 			const ret = function(val) {
 				closeDialog(dialog, cnt)
 				resolve(val ? getFormState() : false)
