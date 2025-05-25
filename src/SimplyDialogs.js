@@ -100,8 +100,10 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
 		if (options) parseOptions(use, options)
-		if (type !== 'wait') dialog.querySelector('.dialog-header').innerHTML = use.headers[type]
-		dialog.querySelector('.dialog-icon').innerHTML = use.icons && use.icons[type] ? use.icons[type] : ''
+
+		if (dialog.querySelector('.dialog-header') && (use.header || use.headers[type])) dialog.querySelector('.dialog-header').innerHTML = use.header || use.headers[type]
+		if (dialog.querySelector('.dialog-icon') && (use.icon || use.icons[type])) dialog.querySelector('.dialog-icon').innerHTML = use.icon || use.icons[type]
+
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
 		if (use.classes && typeof use.classes === 'string') {
 			dialog.classList.add(...use.classes.split(' '))
@@ -275,6 +277,43 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				msg.innerHTML += html
 			},
 			setText: function(html) {
+				msg.innerHTML = html
+			}
+		}				
+	}
+
+//progress
+	const progressHTML = `
+		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-message">
+<div aria-busy="true" aria-describedby="progress-bar">
+  <!-- content is for this region is loading -->
+</div>
+
+<!-- ... -->
+
+<progress id="progress-bar" aria-label="Content loading…" style="width:100%;"></progress>
+		  <p class="dialog-message"></p>
+		</dialog>
+	`;
+
+//			<progress id="dialog-progress" value="0" max="100" aria-busy="true"></progress>
+
+	const progress = function(message, options) {
+		const cnt = getCnt(progressHTML)
+		const dialog = cnt.querySelector('.dialog-template')
+		const msg = dialog.querySelector('.dialog-message')
+		initDialog(dialog, 'progress', options)		
+		msg.innerHTML = message
+		dialog.addEventListener('cancel', (e) => { e.preventDefault() }) //progress are always not cancelable by ESC
+		dialog.showModal()
+		return { 
+			close: function() {
+				closeDialog(dialog, cnt)
+			},
+			setText: function(html) {
+				msg.innerHTML = html
+			},
+			setValue: function(html) {
 				msg.innerHTML = html
 			}
 		}				
@@ -484,6 +523,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		confirm,
 		bell,
 		wait,
+		progress,
 		input,
 		prompt: input //alias
 	}
