@@ -60,6 +60,10 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				return state.input && state.input.length > 1
 			},
 			promise: undefined
+		},
+		progress: {
+			value: undefined,
+			max: undefined
 		}
 	}
 
@@ -285,25 +289,24 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 //progress
 	const progressHTML = `
 		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-message">
-<div aria-busy="true" aria-describedby="progress-bar">
-  <!-- content is for this region is loading -->
-</div>
-
-<!-- ... -->
-
-<progress id="progress-bar" aria-label="Content loading…" style="width:100%;"></progress>
+		  <h4 class="dialog-header"></h4>
+			<span class="dialog-icon"></span>
+			<progress id="progress-bar" aria-label="" style="width:100%;"></progress>
 		  <p class="dialog-message"></p>
 		</dialog>
 	`;
-
-//			<progress id="dialog-progress" value="0" max="100" aria-busy="true"></progress>
 
 	const progress = function(message, options) {
 		const cnt = getCnt(progressHTML)
 		const dialog = cnt.querySelector('.dialog-template')
 		const msg = dialog.querySelector('.dialog-message')
+		const progress = cnt.querySelector('progress')
 		initDialog(dialog, 'progress', options)		
 		msg.innerHTML = message
+		if (options && options.progress) {
+			if (options.progress.max) progress.setAttribute('max', options.progress.max)
+			if (options.progress.value) progress.setAttribute('value', options.progress.value)
+		}
 		dialog.addEventListener('cancel', (e) => { e.preventDefault() }) //progress are always not cancelable by ESC
 		dialog.showModal()
 		return { 
@@ -313,8 +316,8 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			setText: function(html) {
 				msg.innerHTML = html
 			},
-			setValue: function(html) {
-				msg.innerHTML = html
+			setValue: function(value) {
+				progress.setAttribute('value', value)
 			}
 		}				
 	}
