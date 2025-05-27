@@ -16,7 +16,7 @@ Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or w
 * Stackable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Very small footprint, JS + CSS > ~17.7kb minified (current version v1.1.0)
+* Very small footprint, JS + CSS > ~18.5kb minified (current version v1.1.0)
 
 ## Dialogs
 <table>
