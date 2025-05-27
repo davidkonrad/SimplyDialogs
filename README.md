@@ -191,8 +191,14 @@ callback: function(state, dialog) {
 Include the script and CSS.
 
 ```html
-<script src="SimplyDialogs.min.js"></script>
-<link rel="stylesheet" type="text/css" href="SimplyDialogs.min.css">
+<script src="dist/SimplyDialogs.min.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/SimplyDialogs.min.css">
+```
+
+Or refer to the ```.mjs``` version if you want to use SimplyDialogs as module 
+
+```javascript
+import { SimplyDialogs } from './dist/SimplyDialogs.min.mjs'
 ```
 
 That makes a SimplyDialogs function available. For convenience, create a shorthand alias :
