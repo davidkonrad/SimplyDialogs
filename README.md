@@ -1,22 +1,22 @@
 # SimplyDialogs
 
-## Demos and documentation here ⇨ https://simplydialogs.github.io
+## Demos and documentation here → https://simplydialogs.github.io
 
-A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()```, ```wait()``` and ```input()```. 
-Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, Opera, Firefox and Edge (Linux & Windows 10). 
+A small collection of standard dialogs: ```alert()```, ```confirm()```, ```error()```, ```info()```, ```bell()```, ```wait()```, ```progress()``` and ```input()```. 
+Built with ES6 and unicode, utilizing the native ```<dialog>``` HTML element. Works in all modern browsers. Tested with Chrome, Opera, Firefox and Edge.
 
-Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals provided by your favourite framework, like Bootstrap, MaterializeCSS or similar. You can customize the layout so it get the look of your theme / framework. 
+Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or want a quick alternative to the built-in dialogs or modals provided by your favourite framework, like Bootstrap, Tailwind or similar. You can customize the layout so it get the look of your theme / framework. 
 
-* No dependencies; using native &lt;dialog> element and unicode</li>
+* No dependencies; using native ```<dialog>``` element and unicode</li>
 * Truly blocking interaction with background
-* Stays in center of viewport, adjusted to message size, stays in focus while scrolling
+* Stays in focus while scrolling
 * Return promises
-* Support keyboard / mouse the right way
+* Support keyboard / mouse the *right* way
 * Highly customizeable
 * Stackable
 * Neat exploding / imploding effect without exaggerating
 * No forced styling (beyond very basics), adopts the current "theme"
-* Very small footprint, JS + CSS > ~17.3kb minified (current version v1.0.11)
+* Very small footprint, JS + CSS > ~17.7kb minified (current version v1.1.0)
 
 ## Dialogs
 <table>
@@ -31,7 +31,7 @@ Use SimplyDialogs if you just need some dialogs on a minimalistic webpage - or w
 ```alert()```
 
 </td>
-<td><img src="assets/alert.png" width="150"></td>
+<td><img src="assets/alert.png" width="250"></td>
 <td>
 
 ```javascript
@@ -52,7 +52,7 @@ Dlg.alert('Lorem ipsum ...').then(answer => {
 ```information()```<br>```info()```
 
 </td>
-<td><img src="assets/information.png" width="150"></td>
+<td><img src="assets/information.png" width="250"></td>
 <td>
 
 Same as ```alert()```
@@ -66,7 +66,7 @@ Same as ```alert()```
 ```confirm()```
 
 </td>
-<td><img src="assets/confirm.png" width="150"></td>
+<td><img src="assets/confirm.png" width="250"></td>
 <td>
 
 ```javascript
@@ -84,7 +84,7 @@ Dlg.confirm('Lorem ipsum ...').then(answer => {
 ```error()```
 
 </td>
-<td><img src="assets/error.png" width="150"></td>
+<td><img src="assets/error.png" width="250"></td>
 <td>
 
 Same as ```alert()```
@@ -97,7 +97,7 @@ Same as ```alert()```
 ```bell()```
 
 </td>
-<td><img src="assets/bell.png" width="150"></td>
+<td><img src="assets/bell.png" width="250"></td>
 <td>
 
 Same as ```alert()```
@@ -110,19 +110,37 @@ Produces a "beep"; if you not need the beep you can remove it from ```defaults``
 <td>
 
 ```wait()```
-
 </td>
-<td><img src="assets/wait.png" width="150"></td>
+<td><img src="assets/wait.png" width="250"></td>
 <td>
-
-Does not return a promise, but a function you can close the wait dialog with : 
+Does not return a promise, instead some useful methods to interact with the dialog 
 
 ```javascript
 const wait = Dlg.wait('Lorem ipsum ...')
 //do something in code
+wait.setText('alter the dialog message')
+wait.addText('add something to the dialog message')
 wait.close()
 ```
+</td>
+</tr>
 
+<tr>
+<td>
+
+```progress()```
+</td>
+<td><img src="assets/progress.png" width="250"></td>
+<td>
+Does not return a promise, instead some useful methods to interact with the dialog 
+
+```javascript
+const progress = Dlg.progress('Lorem ipsum ...')
+//do something in code
+progress.setValue(42)
+progress.setText('alter the dialog message')
+progress.close()
+```
 </td>
 </tr>
 
@@ -133,34 +151,36 @@ wait.close()
 ```prompt()```
 
 </td>
-<td><img src="assets/input.png" width="150"></td>
+<td><img src="assets/input.png" width="250"></td>
 <td>
-Return promise holding the form state, i.e ```{ firstname: 'Arthur', age: 42 }```
+
+By default just a prompt with a single text input :
 
 ```javascript
-Dlg.input('Lorem ipsum ...', options).then(state) => {
+Dlg.input('Lorem ipsum ...').then(state) => {
  ... 
 })
 ```
+You can specify complex input forms 
 
-You can define a callback in options or ```DEFAULTS```, to determine if the user can submit :
-
+```javascript
+Dlg.input('Lorem ipsum ...', {
+  input: {
+    inputs: [
+	  { type: 'input', inputType: 'text', label: 'Name', name: 'name' },
+	  { type: 'input', inputType: 'number', label: 'Age', name: 'age' },
+   ]}
+}).then(state) => {
+ ... 
+})
+```
+You can add a callback to control the submit button
+			
 ```javascript
 callback: function(state, dialog) { 
-  return state.firstname !== '' 
+  return state.name !== '' && state.age > 42
 })
 ```
-
-If needed, you can pass a promise instead :
-
-```javascript
-promise: function(state, dialog) { 
-  return new Promise((resolve) => {
-    resolve ( true || false )
-  })
-})
-```
-
 
 </td>
 </tr>
@@ -171,24 +191,38 @@ promise: function(state, dialog) {
 Include the script and CSS.
 
 ```html
-<script src="path/to/simplydialogs/dist/SimplyDialogs.min.js"></script>
-<link rel="stylesheet" type="text/css" href="path/to/simplydialogs/dist/SimplyDialogs.min.css">
+<script src="SimplyDialogs.min.js"></script>
+<link rel="stylesheet" type="text/css" href="SimplyDialogs.min.css">
 ```
 
 That makes a SimplyDialogs function available. For convenience, create a shorthand alias :
 
 ```javascript
 const Dlg = SimplyDialogs
-Dlg.alert('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
-Dlg.error('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
-Dlg.confirm('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
-Dlg.info('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
-Dlg.bell('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
+Dlg.alert('Lorem ipsum dolor sit amet')
+Dlg.error('Lorem ipsum dolor sit amet')
+Dlg.confirm('Lorem ipsum dolor sit amet')
+Dlg.info('Lorem ipsum dolor sit amet')
+Dlg.bell('Lorem ipsum dolor sit amet')
 
-const wait = Dlg.wait('Lorem ipsum dolor sit amet, consectetur adipiscing elit')
-wait.close()
+const wait = Dlg.wait('Lorem ipsum dolor sit amet')
+setTimeout(function() {
+  wait.close()
+}, 2000)
 
-Dlg.input('Lorem ipsum dolor sit amet, consectetur adipiscing elit').then(formState => {
+const progress = Dlg.progress('Lorem ipsum dolor sit amet', { progress: { max: 100, value: 0 }})
+let value = 0
+const interval = setInterval(function() {
+  value++
+  progress.setValue(value)
+  if (value === 100) {
+    clearInterval(interval)
+    progress.close()
+  }
+}, 50)
+
+
+Dlg.input('Lorem ipsum dolor sit amet').then(formState => {
   console.log(formState)
 })
 ```
