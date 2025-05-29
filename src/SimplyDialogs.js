@@ -11,7 +11,7 @@
 const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-vars
 	
 	const defaults = {
-		enterSubmit: true,
+		return: true,
 		escape: true,
 		backdrop: undefined,
 		classes: '',
@@ -122,7 +122,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		}
 		dialog.addEventListener('keypress', (e) => { 
 			if (e.which === 13 && e.target.nodeName !== 'TEXTAREA') {
-				if (use.enterSubmit === true) {
+				if (use.return === true) {
 					const me = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false })
 					if (dialog.querySelector('.dialog-ok')) dialog.querySelector('.dialog-ok').dispatchEvent(me)
 					if (dialog.querySelector('.dialog-yes')) dialog.querySelector('.dialog-yes').dispatchEvent(me)
