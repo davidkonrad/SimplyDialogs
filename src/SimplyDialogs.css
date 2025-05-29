@@ -10,6 +10,11 @@ dialog {
 	line-height: 1.5;
 }
 
+dialog:focus,
+dialog:focus-visible {
+	outline: none; 
+}
+
 dialog.default {
 	position: fixed;
 	margin: auto auto;
