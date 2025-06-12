@@ -92,16 +92,6 @@ dialog .dialog-actions {
 	display: inline-block;
 }
 
-dialog #dialog-message {
-	overflow-wrap: anywhere;
-	white-space: break-spaces;
-	margin-bottom: 1em;
-	float: none;
-	margin-top: 1em;
-	width: auto;
-	height: auto;	
-}
-
 dialog button {
 	padding-left: 16px;
 	padding-right: 16px;
@@ -113,6 +103,17 @@ dialog form.dialog-input {
 	height: auto;	
 	width: auto;
 }
+
+dialog form.dialog-input input.required:required {
+	outline: none;
+}
+dialog form.dialog-input input.required:required:valid {
+	border: 2px solid forestgreen;
+}
+dialog form.dialog-input input.required:required:invalid {
+	border: 2px solid maroon;
+}
+
 dialog form.dialog-input.top {
 	grid-template-rows: auto minmax(0, 1fr);
 }
@@ -257,8 +258,8 @@ dialog.lg .dialog-actions,
 dialog.lg-height .dialog-actions,
 dialog.lg-width .dialog-actions {
 	position: absolute;
-	bottom: 1rem;
-	right: 1rem;
+	bottom: .1rem;
+	right: .5rem;
 }
 
 dialog.fullsize .dialog-actions {

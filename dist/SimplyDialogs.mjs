@@ -10,7 +10,7 @@
 const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-vars
 	
 	const defaults = {
-		enterSubmit: true,
+		return: true,
 		escape: true,
 		backdrop: undefined,
 		classes: '',
@@ -69,7 +69,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 	const gebi = (id) => { return document.getElementById(id) }
 
 	const getCnt = function(html) {
-		const cnt = document.createElement("SPAN")
+		const cnt = document.createElement('DIV')
 		cnt.innerHTML = html
 		document.body.appendChild(cnt)
 		return cnt
@@ -103,10 +103,14 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
 		if (options) parseOptions(use, options)
-
 		if (dialog.querySelector('.dialog-header') && (use.header || use.headers[type])) dialog.querySelector('.dialog-header').innerHTML = use.header || use.headers[type]
-		if (dialog.querySelector('.dialog-icon') && (use.icon || use.icons[type])) dialog.querySelector('.dialog-icon').innerHTML = use.icon || use.icons[type]
-
+		if (dialog.querySelector('.dialog-icon')) {
+			if (use.hasOwnProperty('icon')) { 
+				dialog.querySelector('.dialog-icon').innerHTML = use.icon
+			} else if (use.icons && use.icons[type]) {
+				dialog.querySelector('.dialog-icon').innerHTML = use.icons[type]
+			}
+		}
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
 		if (use.classes && typeof use.classes === 'string') {
 			dialog.classList.add(...use.classes.split(' '))
@@ -121,7 +125,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		}
 		dialog.addEventListener('keypress', (e) => { 
 			if (e.which === 13 && e.target.nodeName !== 'TEXTAREA') {
-				if (use.enterSubmit === true) {
+				if (use.return === true) {
 					const me = new MouseEvent('click', { 'view': window, 'bubbles': true, 'cancelable': false })
 					if (dialog.querySelector('.dialog-ok')) dialog.querySelector('.dialog-ok').dispatchEvent(me)
 					if (dialog.querySelector('.dialog-yes')) dialog.querySelector('.dialog-yes').dispatchEvent(me)
@@ -143,12 +147,12 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 	}
 
 	const genericHTML = `
-		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-header dialog-message">
+		<dialog class="dialog-template">
 		  <h4 class="dialog-header"></h4>
 			<span class="dialog-icon"></span>
 		  <p class="dialog-message"></p>
 		  <div class="dialog-actions">
-		    <button role="submit" class="dialog-ok" autofocus></button>
+		    <button class="dialog-ok" autofocus></button>
 		  </div>
 		</dialog>
 	`;
@@ -221,13 +225,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 //confirm
 	const confirmHTML = `
-		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-header dialog-message">
+		<dialog class="dialog-template">
 		  <h4 class="dialog-header"></h4>
 			<span class="dialog-icon"></span>
 		  <p class="dialog-message"></p>
 		  <div class="dialog-actions">
-		    <button role="submit" class="dialog-yes" autofocus></button>
-		    <button role="button" class="dialog-no"></button>
+		    <button class="dialog-yes" autofocus></button>
+		    <button class="dialog-no"></button>
 		  </div>
 		</dialog>
 	`;
@@ -258,7 +262,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 //wait
 	const waitHTML = `
-		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-message">
+		<dialog class="dialog-template">
 			<span class="dialog-icon dialog-spinner"></span>
 		  <p class="dialog-message"></p>
 		</dialog>
@@ -287,7 +291,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 //progress
 	const progressHTML = `
-		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-message">
+		<dialog class="dialog-template">
 		  <h4 class="dialog-header"></h4>
 			<span class="dialog-icon"></span>
 			<progress id="progress-bar" aria-label="" style="width:100%;"></progress>
@@ -323,14 +327,14 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 //input
 	const inputHTML = `
-		<dialog class="dialog-template" role="dialog" aria-labelledby="dialog-header dialog-message">
+		<dialog class="dialog-template">
 		  <h4 class="dialog-header"></h4>
 			<span class="dialog-icon"></span>
 		  <p class="dialog-message"></p>
-			<form class="dialog-input"></form>
+			<form class="dialog-input" autocomplete="off"></form>
 		  <div class="dialog-actions">
-		    <button role="submit" class="dialog-ok" autofocus></button>
-		    <button role="button" class="dialog-cancel"></button>
+		    <button class="dialog-ok" autofocus></button>
+		    <button class="dialog-cancel"></button>
 		  </div>
 		</dialog>
 	`;
@@ -382,9 +386,9 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 		const getLabel = function(label, forId) {
 			const l = document.createElement('LABEL')
-      l.htmlFor = forId
+      if (forId) l.htmlFor = forId
 			l.innerHTML = label || ''
-			l.className = labelClass
+			if (labelClass) l.classList.add(...labelClass.split(' '))
 			return l
 		}
 
@@ -394,8 +398,12 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			const fi = document.createElement(type.toUpperCase())
 			fi.id = type.toLowerCase() + '_' + count
 			fi.name = name || fi.id
-			fi.className = inputClass
-			if (opt) for (const [key, value] of Object.entries(opt)) {
+			if (inputClass) fi.classList.add(...inputClass.split(' '))
+			if (opt.classes) {
+				fi.classList.add(...opt.classes.split(' '))
+				delete opt.classes
+			}
+			for (const [key, value] of Object.entries(opt)) {
 				if (key === 'autofocus') {
 					autofocus = fi
 				} else {
@@ -481,7 +489,9 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			options = initDialog(dialog, 'input', options)
 			if (options.input.formLayout) dialog.querySelector('.dialog-input').classList.add(...options.input.formLayout.split(' '))
 			dialog.querySelector('.dialog-message').innerHTML = message
-			userCallback = options.input.callback || options.input.promise ? { callback: options.input.callback, promise: options.input.promise } : undefined
+			userCallback = options.input.callback || options.input.promise 
+				? { callback: options.input.callback, promise: options.input.promise } 
+				: { callback: (state, dialog) => dialog.querySelector('form').querySelector(':invalid') === null }
 			if (userCallback) dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled')
 			labelClass = options.input.classes.label
 			inputClass = options.input.classes.input
