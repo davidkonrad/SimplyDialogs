@@ -54,11 +54,21 @@ dialog[open] {
 	100% { transform: scale(0); } 
 } 
 
+/*
+dialog[close] {
+	animation-name: implode; 
+	animation-duration: 1s; 
+	animation-fill-mode: backwards; 
+} 
+*/
+
+/*
 dialog.close {
 	animation-name: implode; 
 	animation-duration: .1s; 
 	animation-fill-mode: forwards; 
 } 
+*/
 
 dialog span.dialog-icon {
 	font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
@@ -87,7 +97,7 @@ dialog h4 {
 dialog .dialog-actions {
 	text-align: right;
 	float: right;
-	margin: 6px;
+	margin-right: 4px;
 	margin-top: 1em;
 	display: inline-block;
 }
@@ -101,17 +111,7 @@ dialog form.dialog-input {
 	float: none;
 	display: grid;
 	height: auto;	
-	width: auto;
-}
-
-dialog form.dialog-input input.required:required {
-	outline: none;
-}
-dialog form.dialog-input input.required:required:valid {
-	border: 2px solid forestgreen;
-}
-dialog form.dialog-input input.required:required:invalid {
-	border: 2px solid maroon;
+	width: 100%;
 }
 
 dialog form.dialog-input.top {
@@ -139,6 +139,16 @@ dialog .dialog-input.full-width div input:not(.inline),
 dialog .dialog-input.full-width div textarea,
 dialog .dialog-input.full-width div select {
 	width: 97%;
+}
+
+dialog form.dialog-input input.required:required {
+	outline: none;
+}
+dialog form.dialog-input input.required:required:valid {
+	border: 2px solid forestgreen;
+}
+dialog form.dialog-input input.required:required:invalid {
+	border: 2px solid maroon;
 }
 
 dialog.xsmall, dialog.xs {
@@ -266,6 +276,20 @@ dialog.fullsize .dialog-actions {
 	position: absolute;
 	bottom: 4rem;
 	right: 4rem;
+}
+
+/* classes */
+dialog.no-padding {
+	padding: 0;
+}
+dialog.no-shadow {
+	box-shadow: none;
+}
+dialog.no-backdrop::backdrop {
+	background: rgba(0, 0, 0, 0);
+}
+dialog.dark-backdrop::backdrop {
+	background: rgba(0, 0, 0, 0.5);
 }
 
 

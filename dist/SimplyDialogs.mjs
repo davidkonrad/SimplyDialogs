@@ -114,6 +114,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
 		if (use.classes && typeof use.classes === 'string') {
 			dialog.classList.add(...use.classes.split(' '))
+			if (!use.classes.match(/top|middle|bottom|left|center|right/g)) dialog.classList.add('default')
 		} else {
 			dialog.classList.add('default')
 		}
@@ -369,7 +370,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				if (result) {
 					dialog.querySelector('.dialog-ok').removeAttribute('disabled')
 				} else {
-					dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled')
+					dialog.querySelector('.dialog-ok').setAttribute('disabled', 'disabled') 
 				}
 			}
 			if (userCallback.callback) {
@@ -381,8 +382,9 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			}
 		}
 
-		const br = function() { return document.createElement('BR') }
-		const div = function() { return document.createElement('DIV') }
+		const br = () => { return document.createElement('BR') }
+		const div = () => { return document.createElement('DIV') }
+		const nb = (n) => { return document.createTextNode('\u00A0'.repeat(n || 1)) } //no-break space
 
 		const getLabel = function(label, forId) {
 			const l = document.createElement('LABEL')
@@ -395,7 +397,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		const createFormTag = function(type, name, label, opt) {
 			count++
 			const fd = div()
-			const fi = document.createElement(type.toUpperCase())
+			const fi = document.createElement(type)
 			fi.id = type.toLowerCase() + '_' + count
 			fi.name = name || fi.id
 			if (inputClass) fi.classList.add(...inputClass.split(' '))
@@ -462,6 +464,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 		const createRadio = function(label, name, options, callback, opt) {
 			const dr = div()
+			let required = opt && opt.required
 			options.forEach(o => {
 				count++
 				const r = document.createElement('INPUT')
@@ -471,9 +474,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				r.value = o.value
 				r.name = name || r.id
 				if (callback) r.addEventListener('change', cb)
+				if (required) {
+					r.required = true
+					required = null
+				}
 				const li = getLabel(o.label, r.id)
 				li.className = 'inline'
-				dr.append(r, li, br())
+				dr.append(r, li, opt && opt.float ? nb(3) : br())
 			})
 			const l = getLabel(label, '')
 			const dl = div()
