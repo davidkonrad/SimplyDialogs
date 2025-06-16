@@ -38,13 +38,26 @@ dialog.right {
 dialog.center {
 }
 
+/*
+@keyframes drop-in {
+	from {
+		transform: rotate(-30deg) translateY(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: rotate(0deg) translateY(0%);
+		opacity: 1;
+	}
+}
+*/
+
 @keyframes explode { 
 	0% { transform: scale(0); } 
 	100% { transform: scale(1); } 
 } 
 
 dialog[open] {
-	animation-name: explode; 
+	animation-name: explode;
 	animation-duration: .1s; 
 	animation-fill-mode: forwards; 
 } 
@@ -94,6 +107,12 @@ dialog h4 {
 	margin: 0 0 5px 0;
 }
 
+dialog p.dialog-message {
+	Xfloat: none;
+	Xclear: right;
+	display: block;
+}
+
 dialog .dialog-actions {
 	text-align: right;
 	float: right;
@@ -111,7 +130,6 @@ dialog form.dialog-input {
 	float: none;
 	display: grid;
 	height: auto;	
-	width: 100%;
 }
 
 dialog form.dialog-input.top {
@@ -139,16 +157,6 @@ dialog .dialog-input.full-width div input:not(.inline),
 dialog .dialog-input.full-width div textarea,
 dialog .dialog-input.full-width div select {
 	width: 97%;
-}
-
-dialog form.dialog-input input.required:required {
-	outline: none;
-}
-dialog form.dialog-input input.required:required:valid {
-	border: 2px solid forestgreen;
-}
-dialog form.dialog-input input.required:required:invalid {
-	border: 2px solid maroon;
 }
 
 dialog.xsmall, dialog.xs {
@@ -291,5 +299,28 @@ dialog.no-backdrop::backdrop {
 dialog.dark-backdrop::backdrop {
 	background: rgba(0, 0, 0, 0.5);
 }
+
+/* input classes */
+dialog form.dialog-input input.required:required,
+dialog form.dialog-input select.required:required,
+dialog form.dialog-input textarea.required:required {
+	outline: none;
+}
+dialog form.dialog-input input.required:required:valid,
+dialog form.dialog-input select.required:required:valid,
+dialog form.dialog-input textarea.required:required:valid {
+	outline: 2px solid forestgreen;
+}
+dialog form.dialog-input input.required:required:invalid:focus,
+dialog form.dialog-input select.required:required:invalid:focus,
+dialog form.dialog-input textarea.required:required:invalid:focus {
+	outline: 2px solid maroon;
+}
+
+dialog form.dialog-input input.password {
+	-webkit-text-security: disc;
+}
+
+
 
 

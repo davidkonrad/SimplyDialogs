@@ -431,12 +431,31 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		}
 
 		const createInput = function(type, label, name, callback, opt) {
+			//const pwhack = (type === 'password' && !opt.autocomplete)
+			//if (pwhack) type = 'text' //only working hack
+			if (type === 'password' && !opt.autocomplete) {
+				type = 'text'
+				opt.classes = opt.classes ? opt.classes + ' password' : 'password'
+			}
 			const i = createFormTag('input', name, label, opt)
 			const el = i.f.querySelector('input')
 			el.type = type
 			if (type === 'checkbox') el.classList.add('inline')
 			if (!el.hasAttribute('spellcheck') && (['text','password','url'].includes(type))) el.setAttribute('spellcheck', 'false')
 			if (!el.hasAttribute('autocomplete') && type === 'text') el.setAttribute('autocomplete', 'off')
+/*
+			if (!el.hasAttribute('autocomplete') && type === 'text') el.setAttribute('autocomplete', 'off')
+			if (!el.hasAttribute('autocomplete') && type === 'password') el.setAttribute('autocomplete', 'new-password')
+*/
+/*
+			if (!el.hasAttribute('autocomplete')) {
+				el.setAttribute('autocomplete', 'off')
+				if (type === 'password') {
+					el.type = 'text'
+					el.cssText = '-webkit-text-security: disc;'
+				}
+			}
+*/
 			if (callback) el.addEventListener('input', cb)
 			dialog.querySelector('.dialog-input').append(i.l, i.f)
 		}
@@ -454,18 +473,18 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 		const createSelect = function(label, name, options, callback, opt) {
 			const s = createFormTag('select', name, label, opt)
-			if (callback) s.f.querySelector('select').addEventListener('change', cb)
-			options.forEach(o => { 
-				s.f.querySelector('select').options.add( new Option(o.label, o.value) ) 
-			})
-			if (opt && opt.value) s.f.querySelector('select').value = opt.value
+			const sfq = s.f.querySelector('select')
+			if (callback) sfq.addEventListener('change', cb)
+			options.forEach(o => sfq.options.add( new Option(o.label, o.value) )) 
+			if (opt.value) sfq.value = opt.value
+			if (opt.required) sfq.selectedIndex = -1
 			dialog.querySelector('.dialog-input').append(s.l, s.f)
 		}
 
 		const createRadio = function(label, name, options, callback, opt) {
 			const dr = div()
 			let required = opt && opt.required
-			options.forEach(o => {
+			if (Array.isArray(options)) options.forEach(o => {
 				count++
 				const r = document.createElement('INPUT')
 				r.className = 'inline'
