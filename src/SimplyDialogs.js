@@ -386,7 +386,6 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 		const br = () => { return document.createElement('BR') }
 		const div = () => { return document.createElement('DIV') }
-		const nb = (n) => { return document.createTextNode('\u00A0'.repeat(n || 1)) } //no-break space
 
 		const getLabel = function(label, forId) {
 			const l = document.createElement('LABEL')
@@ -487,9 +486,9 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				const li = getLabel(o.label, r.id)
 				li.className = 'inline'
 				if (opt.inline) {
-					li.setAttribute('style', 'display:inline-block;')
+					li.setAttribute('style', 'display:inline-block;margin-right:.4rem;')
 					li.insertBefore(r, li.firstChild)
-					dr.append(li, nb(2))
+					dr.append(li)
 				} else {
 					dr.append(r, li, br())
 				}

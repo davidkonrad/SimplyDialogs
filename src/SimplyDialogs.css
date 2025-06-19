@@ -38,19 +38,6 @@ dialog.right {
 dialog.center {
 }
 
-/*
-@keyframes drop-in {
-	from {
-		transform: rotate(-30deg) translateY(-100%);
-		opacity: 0;
-	}
-	to {
-		transform: rotate(0deg) translateY(0%);
-		opacity: 1;
-	}
-}
-*/
-
 @keyframes explode { 
 	0% { transform: scale(0); } 
 	100% { transform: scale(1); } 
@@ -61,27 +48,6 @@ dialog[open] {
 	animation-duration: .1s; 
 	animation-fill-mode: forwards; 
 } 
-
-@keyframes implode { 
-	0% { transform: scale(1); } 
-	100% { transform: scale(0); } 
-} 
-
-/*
-dialog[close] {
-	animation-name: implode; 
-	animation-duration: 1s; 
-	animation-fill-mode: backwards; 
-} 
-*/
-
-/*
-dialog.close {
-	animation-name: implode; 
-	animation-duration: .1s; 
-	animation-fill-mode: forwards; 
-} 
-*/
 
 dialog span.dialog-icon {
 	font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
@@ -108,8 +74,6 @@ dialog h4 {
 }
 
 dialog p.dialog-message {
-	Xfloat: none;
-	Xclear: right;
 	display: block;
 }
 
@@ -133,9 +97,10 @@ dialog form.dialog-input {
 	height: auto;	
 }
 
-dialog form.dialog-input.clear-left {
+/* form classes */
+dialog form.dialog-input.form-left {
 	float: left;
-	clear: left;
+	clear: both;
 }
 
 dialog form.dialog-input.top {
@@ -165,6 +130,7 @@ dialog .dialog-input.full-width div select {
 	width: 97%;
 }
 
+/* sizing */
 dialog.xsmall, dialog.xs {
 	width: 18vw;
 	min-width: 18vw;
