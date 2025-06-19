@@ -1,11 +1,12 @@
 /*
 	SimplyDialogs
-	(c) 2022- present David Konrad 
+	(c) 2022- present, David Konrad 
+  davidkonrad at gmail com
 	https://github.com/davidkonrad/simplydialogs
 	https://simplydialogs.github.io
 	MIT License
-*/
-
+**/
+"use strict";
 
 const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-vars
 	
@@ -105,13 +106,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		if (options) parseOptions(use, options)
 		if (dialog.querySelector('.dialog-header') && (use.header || use.headers[type])) dialog.querySelector('.dialog-header').innerHTML = use.header || use.headers[type]
 		if (dialog.querySelector('.dialog-icon')) {
-			if (use.hasOwnProperty('icon')) { 
+			if (Object.hasOwn(use, 'icon')) {  
 				dialog.querySelector('.dialog-icon').innerHTML = use.icon
 			} else if (use.icons && use.icons[type]) {
 				dialog.querySelector('.dialog-icon').innerHTML = use.icons[type]
 			}
 		}
-		;['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
+		['ok', 'cancel', 'yes', 'no'].forEach((name) => popBtn(name))
 		if (use.classes && typeof use.classes === 'string') {
 			dialog.classList.add(...use.classes.split(' '))
 			if (!use.classes.match(/top|middle|bottom|left|center|right/g)) dialog.classList.add('default')
@@ -431,8 +432,6 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		}
 
 		const createInput = function(type, label, name, callback, opt) {
-			//const pwhack = (type === 'password' && !opt.autocomplete)
-			//if (pwhack) type = 'text' //only working hack
 			if (type === 'password' && !opt.autocomplete) {
 				type = 'text'
 				opt.classes = opt.classes ? opt.classes + ' password' : 'password'
@@ -443,19 +442,6 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			if (type === 'checkbox') el.classList.add('inline')
 			if (!el.hasAttribute('spellcheck') && (['text','password','url'].includes(type))) el.setAttribute('spellcheck', 'false')
 			if (!el.hasAttribute('autocomplete') && type === 'text') el.setAttribute('autocomplete', 'off')
-/*
-			if (!el.hasAttribute('autocomplete') && type === 'text') el.setAttribute('autocomplete', 'off')
-			if (!el.hasAttribute('autocomplete') && type === 'password') el.setAttribute('autocomplete', 'new-password')
-*/
-/*
-			if (!el.hasAttribute('autocomplete')) {
-				el.setAttribute('autocomplete', 'off')
-				if (type === 'password') {
-					el.type = 'text'
-					el.cssText = '-webkit-text-security: disc;'
-				}
-			}
-*/
 			if (callback) el.addEventListener('input', cb)
 			dialog.querySelector('.dialog-input').append(i.l, i.f)
 		}
@@ -499,7 +485,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				}
 				const li = getLabel(o.label, r.id)
 				li.className = 'inline'
-				dr.append(r, li, opt && opt.float ? nb(3) : br())
+				if (opt.inline) {
+					li.setAttribute('style', 'display:inline-block;')
+					li.insertBefore(r, li.firstChild)
+					dr.append(li, nb(2))
+				} else {
+					dr.append(r, li, br())
+				}
 			})
 			const l = getLabel(label, '')
 			const dl = div()

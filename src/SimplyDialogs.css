@@ -116,6 +116,7 @@ dialog p.dialog-message {
 dialog .dialog-actions {
 	text-align: right;
 	float: right;
+	clear: left;
 	margin-right: 4px;
 	margin-top: 1em;
 	display: inline-block;
@@ -130,6 +131,11 @@ dialog form.dialog-input {
 	float: none;
 	display: grid;
 	height: auto;	
+}
+
+dialog form.dialog-input.clear-left {
+	float: left;
+	clear: left;
 }
 
 dialog form.dialog-input.top {

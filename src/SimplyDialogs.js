@@ -1,10 +1,11 @@
 /*
 	SimplyDialogs
-	(c) 2022- present David Konrad 
+	(c) 2022- present, David Konrad 
+  davidkonrad at gmail com
 	https://github.com/davidkonrad/simplydialogs
 	https://simplydialogs.github.io
 	MIT License
-*/
+**/
 
 "use strict";
 
@@ -485,7 +486,13 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				}
 				const li = getLabel(o.label, r.id)
 				li.className = 'inline'
-				dr.append(r, li, opt && opt.float ? nb(3) : br())
+				if (opt.inline) {
+					li.setAttribute('style', 'display:inline-block;')
+					li.insertBefore(r, li.firstChild)
+					dr.append(li, nb(2))
+				} else {
+					dr.append(r, li, br())
+				}
 			})
 			const l = getLabel(label, '')
 			const dl = div()
