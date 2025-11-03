@@ -77,6 +77,13 @@ dialog p.dialog-message {
 	display: block;
 }
 
+dialog.close-button {
+	position: relative;
+	top: 10px;
+	right: 20px;
+	content: '×';
+}
+
 dialog .dialog-actions {
 	text-align: right;
 	float: right;
@@ -98,7 +105,8 @@ dialog form.dialog-input {
 }
 
 /* form classes */
-dialog form.dialog-input.form-left {
+dialog form.dialog-input.form-clear {
+	width: 100%;
 	float: left;
 	clear: both;
 }

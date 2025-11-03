@@ -64,7 +64,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 		progress: {
 			value: undefined,
 			max: undefined
-		}
+		},
 	}
 
 	const gebi = (id) => { return document.getElementById(id) }
@@ -104,7 +104,15 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			if (dialog.querySelector(`.dialog-${name}`) && use.buttons.captions[name]) dialog.querySelector(`.dialog-${name}`).innerHTML = use.buttons.captions[name]
 		}
 		if (options) parseOptions(use, options)
-		if (dialog.querySelector('.dialog-header') && (use.header || use.headers[type])) dialog.querySelector('.dialog-header').innerHTML = use.header || use.headers[type]
+		if (dialog.querySelector('.dialog-header')) {
+			if (typeof use.header !== 'undefined') {
+				if (!use.header) { /* */ } else {
+					dialog.querySelector('.dialog-header').innerHTML = use.header
+				}
+			} else {
+				dialog.querySelector('.dialog-header').innerHTML = use.headers[type] || ''
+			}
+		}
 		if (dialog.querySelector('.dialog-icon')) {
 			if (Object.hasOwn(use, 'icon')) {  
 				dialog.querySelector('.dialog-icon').innerHTML = use.icon
@@ -149,7 +157,7 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 	}
 
 	const genericHTML = `
-		<dialog class="dialog-template">
+		<dialog class="dialog-template close-button">
 		  <h4 class="dialog-header"></h4>
 			<span class="dialog-icon"></span>
 		  <p class="dialog-message"></p>
@@ -385,7 +393,6 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 
 		const br = () => { return document.createElement('BR') }
 		const div = () => { return document.createElement('DIV') }
-		const nb = (n) => { return document.createTextNode('\u00A0'.repeat(n || 1)) } //no-break space
 
 		const getLabel = function(label, forId) {
 			const l = document.createElement('LABEL')
@@ -486,9 +493,9 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 				const li = getLabel(o.label, r.id)
 				li.className = 'inline'
 				if (opt.inline) {
-					li.setAttribute('style', 'display:inline-block;')
+					li.setAttribute('style', 'display:inline-block;margin-right:.4rem;')
 					li.insertBefore(r, li.firstChild)
-					dr.append(li, nb(2))
+					dr.append(li)
 				} else {
 					dr.append(r, li, br())
 				}
@@ -542,20 +549,50 @@ const SimplyDialogs = (function(document) { // eslint-disable-line no-unused-var
 			})
 		})
 	}
+
+	const custom = function(type, message, options, renderCallback) {
+		let ld = undefined
+		let ret = undefined
+		let div = undefined
+		const tf = this.hasOwnProperty(type) && type !== 'DEFAULTS' ? this[type] : this['alert']
+		switch (type) {
+			case 'alert' :
+			case 'information':
+			case 'alert' :
+			case 'error' :
+			case 'confirm' :
+			case 'input' :
+				div = document.createElement('DIV')
+				ret = tf(message, options)
+				ld = document.querySelector('.dialog-template:last-child')
+				ld.querySelector('.dialog-message').insertAdjacentElement('afterend', div)
+				break
+			default:
+				let opt = { icon: null, header: false, classes: 'md-height' }
+				if (typeof options  === 'object') opt = { ...opt, ...options }
+				ret = tf('', opt)
+				ld = document.querySelector('.dialog-template:last-child')
+				div = ld.querySelector('.dialog-message')
+				break
+		}
+		if (renderCallback) renderCallback(ld, div)
+		return ret
+	}
 	
 //api
 	return {
 		DEFAULTS: defaults,
 		alert,
 		information, 
-		info: information, //alias
 		error,
 		confirm,
 		bell,
 		wait,
 		progress,
 		input,
-		prompt: input //alias
+		custom,
+		prompt: input, //alias
+		info: information //alias
 	}
 	
 })(document);
